@@ -1,0 +1,25 @@
+seed: 17
+device: cpu
+task:
+  train_samples: 3000
+  val_samples: 750
+  seq_len: 48
+  num_entities: 96
+  num_relations: 12
+  revision_probability: 0.70
+model:
+  d_model: 96
+  memory_rank: 24
+  num_banks: 8
+  num_layers: 2
+  num_heads: 4
+  dropout: 0.10
+train:
+  epochs: 8
+  batch_size: 24
+  learning_rate: 0.0008
+  weight_decay: 0.01
+  grad_clip: 1.0
+  amp: false
+  num_workers: 0
+output_dir: runs/cpu

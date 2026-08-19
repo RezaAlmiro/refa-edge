@@ -1,0 +1,25 @@
+seed: 23
+device: auto
+task:
+  train_samples: 12000
+  val_samples: 2400
+  seq_len: 96
+  num_entities: 256
+  num_relations: 24
+  revision_probability: 0.75
+model:
+  d_model: 192
+  memory_rank: 48
+  num_banks: 12
+  num_layers: 3
+  num_heads: 6
+  dropout: 0.10
+train:
+  epochs: 15
+  batch_size: 16
+  learning_rate: 0.0006
+  weight_decay: 0.02
+  grad_clip: 1.0
+  amp: true
+  num_workers: 0
+output_dir: runs/rtx2060

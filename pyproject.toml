@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "refa-edge"
+version = "0.1.0"
+description = "A local-first research MVP for relational evidence memory on minimal hardware"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "REFA Edge contributors"}]
+keywords = ["artificial-intelligence", "memory", "reasoning", "edge-ai", "pytorch"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "numpy>=1.24",
+  "PyYAML>=6.0",
+  "torch>=2.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+api = ["fastapi>=0.110", "uvicorn[standard]>=0.29"]
+
+[project.scripts]
+refa-edge = "refa_edge.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
