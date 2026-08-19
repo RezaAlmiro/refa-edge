@@ -63,10 +63,10 @@ PyTorch must be downloaded.
 git clone https://github.com/RezaAlmiro/refa-edge.git
 cd refa-edge
 py -3.11 -m venv .venv
-..venvScriptspython.exe -m pip install --upgrade pip
-..venvScriptspython.exe -m pip install -e .
-..venvScriptsefa-edge.exe doctor
-..venvScriptsefa-edge.exe smoke
+.venv/Scripts/python.exe -m pip install --upgrade pip
+.venv/Scripts/python.exe -m pip install -e .
+.venv/Scripts/refa-edge.exe doctor
+.venv/Scripts/refa-edge.exe smoke
 ~~~
 
 Using the virtual environment's executable directly avoids PowerShell activation
@@ -99,8 +99,8 @@ If it says false, install the current CUDA-enabled PyTorch build using the offic
 the doctor again.
 
 ~~~powershell
-..venvScriptsefa-edge.exe fit-check --config configstx2060_6gb.yaml --model refa
-..venvScriptsefa-edge.exe benchmark --config configstx2060_6gb.yaml --models refa,gru,transformer,fast_stream
+.venv/Scripts/refa-edge.exe fit-check --config configs/rtx2060_6gb.yaml --model refa
+.venv/Scripts/refa-edge.exe benchmark --config configs/rtx2060_6gb.yaml --models refa,gru,transformer,fast_stream
 ~~~
 
 Laptop RTX 2060 models differ. If memory runs out, change
