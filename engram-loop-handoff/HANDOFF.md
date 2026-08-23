@@ -118,6 +118,15 @@ untrained "unknown" code path with zero false negatives.
     close-decoy errors; temporal displacement ≈ revision failures; calibrated abstention
     ≈ unknown-class type-2 ROC — now with the measured-evidence head as the instrument.
 
+## Handing this program to another LLM
+
+A complete, self-contained briefing pack lives at the repo root: **`llm-handoff/`** —
+mission, exact state, research index, the standing critical assessment (with four kill
+experiments), frontier comparison, compute levers, push directions with
+creative-connection seeds, an ordered task queue, and a paste-ready boot prompt
+(`llm-handoff/BOOT-PROMPT.md`). Any successor session — human-driven or another model —
+should start there.
+
 ## Session log
 
 - **2026-08-21** — Waves Over Weights review written and published (artifact above).
