@@ -1,0 +1,865 @@
+
+The Engram Loop
+
+ Research proposal · 22 August 2026
+ The Engram Loop
+
+ 
+ A brain-derived architecture program for neural networks that
+ do not confabulate, spend compute only where prediction fails,
+ and hold genuine working, short-term, long-term, and time-coded memory.
+ Companion to the review Waves Over Weights.
+ Built on 16 targeted literature sweeps (neuroscience + ML, verified to Aug 2026).
+ 
+
+ 
+ 
+ Goal 1 · Honesty
+ Outputs grounded in tagged, checkable memory — with calibrated abstention where memory ends.
+
+ 
+
+ 
+ Goal 2 · Efficiency
+ Compute allocated by prediction error, not spent uniformly on every token at every layer.
+
+ 
+
+ 
+ Goal 3 · Memory
+ Separate, interacting stores for now, recently, and always — with time as a first-class code.
+
+ 
+
+ 
+
+ 
+ The premise: these are not three problems. Hallucination, waste, and amnesia are three symptoms
+ of one architectural defect — a language model is a cortex without a hippocampus, without a
+ clock, without a monitor, and without a metabolism. The brain solved all four with a small
+ set of mechanisms that are individually well documented, individually mappable onto 2026 ML,
+ and — as of sixteen verified literature sweeps — never assembled in one system. This proposal
+ assembles them.
+ 
+
+ 
+ 00Abstract
+
+ 01Diagnosis — three symptoms, one defect
+
+ 02The association ledger — 26 mappings
+
+ 03The Engram Loop architecture
+
+ 04Four aims, with falsifiable predictions
+
+ 05The Confabulation Battery
+
+ 06Benchmarks & targets
+
+ 07Phased plan & resources
+
+ 08Risk register & honest limits
+
+ 09Sources
+
+ 
+
+ 
+ 00 · Abstract
+ One currency, four organs
+
+ 
+
+ 
+ Proposal in one paragraph
+
+ 
+ We propose to build and evaluate a language-model architecture organized around the brain's
+ complementary-learning-systems design, with four additions to a standard backbone:
+ (1) a hippocampal module — a pattern-separated episodic store whose every
+ entry carries provenance tags and multi-scale timestamps, written under surprise gating and
+ read under an explicit encode-vs-retrieve mode signal;
+ (2) a temporal stack — a nested phase code (generalizing rotary embeddings
+ to token-in-chunk-in-episode) plus a Laplace-domain clock giving the model a queryable,
+ scale-invariant sense of when;
+ (3) a reality monitor — a trained second-order head that reads provenance,
+ retrieval agreement, and control-plane coherence, and is optimized under scoring rules that
+ reward calibrated abstention; and
+ (4) a surprise economy with a sleep cycle — one prediction-error estimator
+ that gates compute depth, memory writes, and abstention, plus an offline consolidation phase
+ that distills prioritized episodic replay into sparse parametric memory.
+ The unifying scientific claim: prediction error is the brain's shared currency for
+ efficiency, memory, and honesty, and adopting it as an architectural primitive buys all
+ three at once. Every aim carries falsifiable predictions and kill criteria, and the
+ program's first deliverable — a neuropsychology-derived Confabulation Battery — is usable
+ on any existing model without training anything.
+ 
+
+ 
+
+ 
+ 01 · Diagnosis
+ Three symptoms, one defect
+
+ 
+
+ 
+ Current LLMs implement exactly one memory system: parametric weights — a pure
+ pattern-completion engine, the analog of cortical semantic memory. Everything the brain wraps
+ around that engine is missing. Each target failure maps to a specific missing organ, and each
+ organ has a specific clinical proof-of-necessity in humans:
+ 
+
+ 
+ Hallucination = confabulation
+ 
+ 
+ Confident, fluent, false — LLM hallucination is a phenocopy of human confabulation, and
+ the lesion literature says precisely which organs are missing. Schnider's confabulating
+ patients fail orbitofrontal reality filtering: the pre-conscious (200–300 ms)
+ suppression of activated memories that don't pertain to now — their memory
+ content is intact; the now-relevance gate is broken. Source-monitoring theory (Johnson)
+ adds that human memories carry provenance features (perceived vs. imagined vs. told),
+ and reality-monitoring studies localize the perceived/imagined discrimination to anterior
+ prefrontal cortex. LLMs have none of this: parametric knowledge carries zero provenance,
+ zero timestamps, and no now-relevance gate — so they behave like patients. Behavioral
+ confirmation already exists: LLMs reproduce the DRM false-memory effect, recalling the
+ semantic gist item that was never presented — the signature error of a gist system
+ (cortex) running without a verbatim system (hippocampus). OpenAI's 2025 statistical
+ account (Kalai et al.) is complementary, not competing: it proves models will
+ guess when benchmarks reward guessing and abstention has no substrate. We supply the
+ substrate; their scoring reform supplies the incentive.
+ 
+
+ 
+
+ 
+
+ 
+ Waste = missing metabolism
+ 
+ 
+ The brain runs on ~20 W under a brutal energy constraint that produced three design rules:
+ sparse coding (1–4% of neurons active — the energy-optimal rate given costs measured by
+ Attwell & Laughlin), predictive coding (transmit only prediction errors, not
+ raw signals), and event-driven computation (silence is free). Transformers violate all
+ three: every token gets every layer, every prediction is computed from scratch, and
+ nothing is free. ML's efficiency tools — mixture-of-experts, mixture-of-depths,
+ speculative decoding, spiking backbones — each rediscover one rule in isolation, with
+ learned routers where the brain uses a principled signal: surprise. Compute
+ should flow to exactly the tokens the model failed to predict.
+ 
+
+ 
+
+ 
+
+ 
+ Amnesia = missing hippocampus & clock
+ 
+ 
+ A context window is not working memory (no selection, no protection, catastrophic at
+ scale — long-context degradation up to 85% is documented); RAG is not episodic memory (no
+ pattern separation, no consolidation, surface-level provenance); finetuning is not
+ systems consolidation (catastrophic forgetting was literally the founding motivation of
+ complementary-learning-systems theory in 1995 — McClelland's answer to why the brain has
+ two learning systems is an answer about neural networks). And nothing in the
+ stack encodes when: the brain time-stamps experience with a Laplace-domain
+ temporal code (time cells; mPFC ramping cells shown in 2024 to implement a literal real
+ Laplace transform of past events) that makes recency, order, and elapsed time queryable
+ at every scale. Schnider's patients show what breaks without it — and LLM agents
+ continuously updating their own memory show the same corruption pattern in 2026 studies.
+ 
+
+ 
+
+ 
+
+ 
+ The synthesis claim follows from the three columns sharing machinery: the organ that fixes
+ amnesia (a tagged episodic store) is the organ the monitor needs to fix hallucination (it
+ supplies provenance to check against), and the signal that fixes waste (prediction error) is
+ the signal that decides what the store writes and when the monitor abstains. That is why this
+ is one program, not three.
+ 
+
+ 
+ 02 · The association ledger
+ 26 brain-to-ML mappings this program builds on
+
+ 
+
+ 
+ The requested associations, in one table: mechanism, best-supported neuroscience source, its
+ 2026 ML counterpart, and status. convergent = both fields
+ found it independently (these validate the approach);
+ partial = ML has a fragment;
+ absent = no ML translation exists (verified by search) —
+ these are the program's building sites.
+ 
+
+ 
+ 
+ Brain mechanismML counterpart (2026)StatusAim
+
+ 
+ Memory systems
+
+ Complementary learning systems — fast hippocampal episodes, slow cortical semantics (McClelland 1995; Kumaran 2016)RAG and finetuning exist as disconnected halves; no closed loop. CLS was invented to solve catastrophic forgetting in ANNs — the field forgot its own originpartialA1·A4
+
+ Hippocampal index theory — episodes stored as pointers into cortex (Teyler & DiScenna)Vector stores; Meta's memory layers (128B sparse KV params, largest gains on factual QA); DeepSeek's Engram (Jan 2026) — O(1) conditional n-gram memory, reportedly the DeepSeek-V4 blueprint. All are static stores: no episodes, no provenance, no timepartialA1
+
+ Dentate gyrus pattern separation — similar episodes forced apart before storageProduct-key addressing is sparse but does not decorrelate near-duplicates; interference unmanagedabsentA1
+
+ CA3 pattern completion — attractor recall from partial cuesModern Hopfield networks ≡ attention (Ramsauer 2020) — an exact mathematical identityconvergentA1
+
+ Novelty/surprise-gated encoding — dopaminergic tagging of what's worth storing (Lisman & Grace)Titans: memory written in proportion to gradient surprise, at test time (Google 2025). Independent reinvention — the program's strongest validationconvergentA1·A4
+
+ Activity-silent working memory in short-term synaptic weights (Mongillo 2008; Stokes 2015)Fast-weight programmers ≡ linear attention (exact identity); TTT layers, LaCT — thriving but never named as WM theoryconvergentA2
+
+ Engram allocation — excitability competition decides which cells store the memory (Josselyn & Tonegawa)No learned write-allocation policy over memory slotsabsentA1
+
+ Sharp-wave-ripple replay, prioritized by expected utility (Mattar & Daw 2018)Prioritized replay exists in RL only; LLM consolidation pipelines sample naivelypartialA4
+
+ Systems consolidation & reconsolidation — episodic→semantic transfer during sleep; retrieval reopens plasticityFragments: sleep-like context→fast-weight consolidation (2026), Letta sleep-time compute, sparse memory finetuning (low-forgetting, May 2026). Never a provenance-preserving closed loop — and naive continuous updating measurably corrupts agent memory (2026)partialA4
+
+ Multi-timescale synapses — cascades of variables protecting old memories (Benna & Fusi 2016)One learning rate per parameter; optimizer moments are unwitting cousinsabsentA4
+
+ Time
+
+ Theta–gamma nesting — items in gamma slots inside a theta cycle; the original working-memory capacity account (Lisman & Idiart)RoPE is a single-scale phase code — the right primitive, un-nested. No token-in-chunk-in-episode hierarchypartialA2
+
+ Laplace-domain temporal code — time cells; mPFC ramping cells implement a real Laplace transform of the past; inverse gives a compressed, scale-invariant timeline (Howard; direct evidence 2024)HiPPO/SSM decay spectra are Laplace-domain history compression — but “when” is never exposed as a queryable signalpartialA2
+
+ Phase precession — sequences compressed into plasticity-compatible windowsNo counterpart; context compression is ad hoc summarizationabsentA2
+
+ Encode-vs-retrieve scheduling by theta phase and acetylcholine — novelty suppresses the retrieval pathway, sparing sensory input (Hasselmo; confirmed by phase-specific manipulation)Nothing. The context-vs-parametric knowledge conflict is a documented hallucination source with no arbitration mechanismabsentA2·A3
+
+ Working memory as bursty attractor visits + wave-buffered recency (Lundqvist 2016; Miller 2026)Wave-RNNs and oscillatory SSMs (LinOSS) hold recency in wave state — content only, no control (companion review, P2)nascentA2
+
+ Rotating sleep-spindle waves schedule plasticity windows (Muller 2016)Nothing — no spatial or phase scheduling of when parameters may learn (companion review, P6)absentA4
+
+ Honesty
+
+ Orbitofrontal reality filtering — pre-conscious suppression of memories not pertaining to now; its lesion produces behaviorally-acted-upon confabulation (Schnider)Nothing. No now-relevance gate exists on parametric recall in any architectureabsentA3
+
+ Source monitoring — memories carry provenance features: perceived / imagined / told (Johnson)RAG citations are surface decoration; parametric knowledge has zero provenanceabsentA1·A3
+
+ Reality monitoring — anterior PFC discriminates self-generated from perceived; individual differences track paracingulate anatomy (Simons)Post-hoc detectors: semantic entropy (Nature 2024), SE probes, per-layer entropy lenses, attention-sink signals — monitoring bolted on, never built inpartialA3
+
+ Metacognition — confidence as a trained second-order readout, dissociable from first-order performance (Fleming)Verbalized confidence is poorly calibrated; probes read hidden states; no second-order head trained under abstention-rewarding scoring (the fix Kalai et al. call for)partialA3
+
+ Gist vs. verbatim memory — cortical gist generates DRM false memories; hippocampal verbatim traces veto them (fuzzy-trace theory)LLMs reproduce DRM intrusions behaviorally (2025) — they are a gist system running without a verbatim system. Diagnosis convergent; fix absentconvergentA3·B
+
+ Confabulation neuropsychology — intact fluency, intact knowledge, broken monitoring (Moscovitch's “honest lying”)Hallucination taxonomies (certainty × knowledge axes, 2025) rediscover the clinical distinctions without the clinical testsconvergentB
+
+ Efficiency
+
+ Energy-optimal sparse coding — 1–4% activity given measured costs (Attwell & Laughlin; Levy & Baxter)Spiking LLMs arrive at scale: SpikingBrain 1.0/2.0 — ~0.034 pJ effective MAC (≈97.7% below FP16), 100× time-to-first-token at 4M contextnascentA4
+
+ Predictive coding — only prediction errors propagate (Rao & Ballard)Speculative decoding is its degenerate form (draft = prediction; verify = error check) — the analogy is unnamed in ML. Mixture-of-depths routes by learned policy, not by errorpartialA4
+
+ Dendritic computation — each neuron is internally a two-layer network; local nonlinearities are nearly free depth (Poirazi; Larkum)Dendritic gated networks exist as a niche; unexploited at scalenascent—
+
+ Analog wave control plane — fields route and gate at near-zero marginal energy (Miller, Brincat & Roy 2026)Companion review: control-plane translation entirely absent (P1–P5); hardware split-substrate proposal (P10)absentA4
+
+ 
+ 
+ 
+
+ 
+ 03 · Architecture
+ The Engram Loop
+
+ 
+
+ 
+ One backbone, four organs, two cycles. During the wake cycle, the backbone
+ reads and writes a tagged episodic store under mode control, with one surprise estimator
+ gating three things at once. During the sleep cycle, prioritized replay
+ distills episodes into sparse parametric memory — closing the complementary-learning-systems
+ loop that RAG and finetuning each implement half of.
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ WAKE CYCLE
+
+ 
+ input
+ 
+
+ 
+ 
+ CORTEX
+ backbone LLM · semantic memory
+ in weights (slow, gist)
+ + fast-weight WM (activity-silent)
+ + sparse memory layers
+
+ 
+ 
+ HIPPOCAMPAL STORE
+ episodes · pattern-separated
+ provenance tags (seen/said/told)
+ Laplace timestamps (when)
+ Hopfield-attention recall (CA3)
+
+ 
+ 
+ write · surprise-gated
+ 
+ recall · mode-gated
+
+ 
+ 
+ MODE
+ ACh dial
+ 
+ encode ⇄ retrieve
+ 
+ trust context vs weights
+
+ 
+ 
+ TEMPORAL STACK
+ nested phase code (θ–γ RoPE)
+ Laplace clock — queryable “when”
+ 
+ time-stamps all traffic
+
+ 
+ 
+ SURPRISE ESTIMATOR
+ prediction error = one currency
+ high error → attend, store, doubt
+ 
+ errors
+ 
+ 
+ gate 1 · compute depth
+ 
+ gate 2 · writes
+ 
+ gate 3
+
+ 
+ 
+ REALITY
+ MONITOR
+ provenance
+ now-relevance
+ confidence
+ 
+ 
+ draft output
+ 
+ answer · cite · abstain
+
+ 
+ SLEEP CYCLE (offline)
+ 
+ PRIORITIZED REPLAY
+ ripple-style: surprise × utility
+ 
+ episodes
+ 
+ 
+ distill → sparse memory
+ finetune (low-forgetting)
+ 
+ 
+
+ 
+ The wake cycle (solid) runs per token: the backbone drafts; surprise gates how deep the
+ draft computes, what the store writes, and whether the monitor lets the answer out. The
+ sleep cycle (dashed) runs offline: episodes worth keeping are replayed in priority order
+ and distilled into sparse parametric memory — episodic becomes semantic, with provenance
+ preserved, exactly the transfer RAG-plus-finetuning never closes.
+ 
+
+ 
+
+ 
+ 04 · Aims
+ Four aims, each with predictions that can fail
+
+ 
+
+ 
+ AIM 1The Hippocampus — a tagged, separated, gated episodic store
+
+ CLS · pattern separation · engram allocation · source tags ↔ memory layers · Titans · Hopfield-attention
+
+ 
+ Design
+ 
+ Build the episodic organ ML keeps approximating: a store whose substrate is a
+ trainable sparse memory layer (Meta-style product keys or DeepSeek-Engram-style
+ conditional tables — both proven at scale, both static today), whose write policy is
+ surprise-gated with a learned allocation head (engram competition — write to
+ least-recently-useful, most-excitable slots), whose encoder decorrelates
+ near-duplicate episodes before storage (dentate-style separation: contrastive
+ orthogonalization of same-entity different-event traces), and whose entries are
+ typed: every trace carries provenance (perceived = in-context evidence,
+ told = retrieved document, self = model's own prior generation)
+ and a Laplace timestamp from Aim 2. Recall is Hopfield-attention pattern completion,
+ gated by the Aim 2 mode signal.
+ 
+ Experiments
+ 
+ Multi-session agent workloads (LongMemEval-V2), knowledge-conflict suites (context
+ contradicts weights), entity-dense long-context QA. Ablations: remove separation, remove
+ typing, remove allocation — measure which hallucination classes return.
+ 
+ Falsifiable predictions
+ 
+ (1) Provenance-typed retrieval cuts context-memory-conflict hallucinations by ≥50% at
+ matched closed-book accuracy. (2) Removing pattern separation reinstates DRM-style
+ intrusions dose-dependently — the battery (§05) will show the curve. (3) The
+ self/perceived tag distinction reduces self-conditioning cascades (the model treating its
+ own prior confabulation as evidence), measurable as reduced error compounding in
+ long generations.
+ 
+ Kill criterion
+ If typing and separation don't causally move misattribution rates under ablation, the source-monitoring transfer is wrong — keep the store, drop the theory.
+ 
+ 
+
+ 
+ AIM 2The Clock — nested phase and Laplace time as first-class codes
+
+ theta–gamma nesting · time cells · Laplace code · ACh mode switch ↔ RoPE · HiPPO/SSM spectra · fast weights
+
+ 
+ Design
+ 
+ Two temporal codes plus a mode signal. (a) Nested phase: generalize
+ rotary embeddings from one scale to a theta–gamma hierarchy — fast phase for
+ token-in-chunk, slow phase for chunk-in-episode, slower still for episode-in-history —
+ making order information compositional across scales instead of flat.
+ (b) The Laplace clock: maintain a bank of exponentially decaying traces
+ over log-spaced time constants (exactly Howard's neural real-Laplace transform; exactly
+ an SSM eigenvalue spectrum, finally exposed) whose inverse yields a compressed “when”
+ estimate attached to every episodic write — so retrieval can be conditioned on
+ when, and recency competes with relevance explicitly.
+ (c) The mode dial: a learned scalar (ACh analog), driven by the surprise
+ estimator, that arbitrates encode-vs-retrieve: high novelty suppresses pattern-completion
+ (trust the input, write), low novelty releases it (trust memory, read) — the first
+ principled mechanism for the context-vs-weights conflict. Working memory rides on fast
+ weights (the Mongillo identity) protected by phase-scoped decay.
+ 
+ Experiments
+ 
+ Temporal QA (before/after/elapsed judgments at scales from tokens to sessions), ordered
+ recall under interference, knowledge-conflict arbitration, BABILong/RULER length
+ generalization.
+ 
+ Falsifiable predictions
+ 
+ (1) Elapsed-time judgments show scale-invariant (Weber-like) error — constant relative,
+ not constant absolute, error across timescales; learned positional baselines won't.
+ (2) The mode dial beats prompt-level instructions (“trust the document”) on conflict
+ suites by a margin that grows with conflict subtlety. (3) Removing the Laplace clock
+ selectively raises temporally displaced intrusions — true facts asserted in the
+ wrong “now” — the exact Schnider signature, measured by §05.
+ 
+ Kill criterion
+ If the Laplace clock never beats strong learned-positional baselines on temporal tasks, time-as-code dies; nesting and mode dial stand or fall separately.
+ 
+ 
+
+ 
+ AIM 3The Monitor — reality filtering as architecture, abstention as objective
+
+ orbitofrontal reality filter · source & reality monitoring · metacognition ↔ semantic-entropy probes · abstention scoring (Kalai)
+
+ 
+ Design
+ 
+ A trained second-order head that gates output, reading four signals no post-hoc probe
+ has access to: (1) provenance agreement — does the draft's content trace
+ to typed episodic support, and of which type; (2) now-relevance — the
+ Schnider gate: does the supporting trace's Laplace timestamp pertain to the current
+ episode, suppressing activated-but-stale memory; (3) unresolved surprise
+ — did prediction error against retrieved evidence stay high; (4) control-plane
+ coherence — the companion review's P9 signal (stencil-mismatch predicted
+ behavioral errors in macaques before the response; the analog predicts confabulation
+ before generation). Trained under proper scoring rules that reward calibrated abstention
+ — implementing exactly the incentive repair OpenAI's hallucination analysis calls for,
+ but with an organ that makes abstention informed rather than timid. Output modes: answer
+ with citation, answer hedged, abstain, or verify (trigger targeted retrieval —
+ spend compute where gate 3 says doubt lives).
+ 
+ Experiments
+ 
+ SimpleQA/FActScore-style factuality with answer-rate accounting; the Confabulation
+ Battery (§05) pre/post; cross-domain generalization of the monitor vs. semantic-entropy
+ probes and per-layer entropy lenses as baselines.
+ 
+ Falsifiable predictions
+ 
+ (1) ≥30% hallucination reduction at ≤5 points answer-rate cost on abstention-scored
+ factuality — beating the post-hoc-probe frontier at matched data. (2) The monitor
+ transfers across domains better than probes because it reads typed memory, not surface
+ statistics. (3) Battery profile normalizes: DRM intrusions and temporal-displacement
+ errors drop specifically, not just average error.
+ 
+ Kill criterion
+ If the four architectural signals add nothing over semantic-entropy probes at matched training, the monitor thesis fails — the field keeps cheap probes and we publish the negative.
+ 
+ 
+
+ 
+ AIM 4The Metabolism — one surprise economy, and sleep
+
+ predictive coding · ripple replay · consolidation · sparse coding ↔ mixture-of-depths · sparse memory finetuning · spiking backbones
+
+ 
+ Design
+ 
+ Wake: the single surprise estimator (a light head over backbone
+ prediction error, calibrated online) drives all three gates: token-level compute depth
+ (mixture-of-depths routing by error, not learned policy — easy tokens exit early exactly
+ as speculative decoding already proves is safe), episodic writes (Aim 1), and
+ abstention/verification (Aim 3). Sleep: offline, replay episodes in
+ ripple order — priority = surprise × downstream utility (Mattar & Daw's need×gain,
+ already proven as prioritized replay in RL) — and distill into the sparse memory
+ substrate via memory-layer finetuning (the May 2026 low-forgetting result), with
+ reconsolidation guards: provenance and timestamps survive distillation, and a replayed
+ memory that fails verification is quarantined, not rewritten — the documented 2026
+ failure mode of continuously self-updated agent memory. Efficiency floor: hybrid
+ spiking/quantized execution for the always-on paths (SpikingBrain-class), with the
+ analog control-plane hardware track (companion P10) as the long-horizon option.
+ 
+ Experiments
+ 
+ FLOPs/token and J/token at matched quality; weeks-later retention curves (does
+ consolidated knowledge survive without the store?); forgetting audits vs. full finetune;
+ gate-sharing ablation (one estimator vs. three specialists).
+ 
+ Falsifiable predictions
+ 
+ (1) One shared estimator matches three specialist gates within noise while cutting total
+ FLOPs ≥30% vs. uniform compute at equal quality — the currency thesis made numeric.
+ (2) Ripple-ordered consolidation beats i.i.d. replay on retention at equal replay budget.
+ (3) Surprise-gated depth correlates with human reading-time profiles (an old psycholinguistic
+ result, free validation).
+ 
+ Kill criterion
+ If specialist gates decisively beat the shared currency, the unification claim dies — the organs remain, the economy doesn't.
+ 
+ 
+
+ 
+ 05 · First deliverable
+ The Confabulation Battery
+
+ 
+
+ 
+ Neuropsychology spent fifty years building tests that dissociate which memory organ
+ is broken. Ported to LLMs, they become a diagnostic that no benchmark currently provides —
+ factuality suites measure how much a model confabulates; the battery measures
+ in which way, and therefore which organ to fix. Behavioral precedent exists (DRM
+ effects demonstrated in LLMs, 2025); the contribution is a standing, standardized battery
+ with per-organ scores, runnable on any model in a day, before we train anything. It is also
+ the program's own instrument panel: every aim predicts a specific battery signature.
+ 
+
+ 
+ 
+ SubtestPorted fromWhat it isolatesFixed by
+
+ 
+ Gist intrusionDRM paradigmFalse recall of the unpresented semantic lure — gist running unvetoed by verbatim memoryAim 1
+
+ Source attributionJohnson source monitoringDid the model see it, get told it, or say it itself? Confusion rates by pair, including self-conditioning on its own prior outputAims 1·3
+
+ Temporal displacementSchnider continuous-recognition taskFalse positives from previously relevant, currently irrelevant information across runs — the reality-filtering failure that defines clinical confabulationAims 2·3
+
+ Elapsed-time judgmentTime-cell / interval-timing psychophysicsWeber-law scaling of “how long ago” errors — whether time is coded or inferredAim 2
+
+ Conflict arbitrationHasselmo encode/retrieve logicBehavior when trustworthy context contradicts parametric belief, graded by conflict subtletyAim 2
+
+ Calibrated abstentionMetacognition psychophysics (type-2 ROC) + Kalai scoringSecond-order sensitivity: does confidence discriminate the model's own hits from misses, scored to reward honest “I don't know”Aim 3
+
+ 
+ 
+ 
+
+ 
+ Published as an open harness with per-organ radar profiles, the battery is a contribution
+ even if every architectural bet fails — and Phase 0 ships it first so all later claims are
+ measured on a pre-registered instrument.
+ 
+
+ 
+ 06 · Evaluation
+ Benchmarks and numeric targets
+
+ 
+
+ 
+ 
+ GoalInstrumentsProgram target (vs. size-matched baseline)
+
+ 
+ 
+ Honesty
+ Confabulation Battery; SimpleQA-class factuality with answer-rate accounting; FActScore long-form; knowledge-conflict suites
+ ≥50% conflict-hallucination reduction (A1); ≥30% overall at ≤5 pt answer-rate cost (A3); battery profile in human-typical range on gist intrusion and temporal displacement
+ 
+
+ 
+ Memory
+ LongMemEval-V2 (multi-session), BABILong / RULER (length), ordered-recall and temporal QA (new, released with battery)
+ Session-scale retention weeks later after store deletion (consolidation proof); scale-invariant temporal error; no length cliff to 1M tokens
+ 
+
+ 
+ Efficiency
+ FLOPs/token, J/token (measured, not theoretical), TTFT at 1M-token context, KV + store memory footprint
+ ≥30% FLOPs reduction from surprise-gated depth at equal quality (A4); ≥10× J/token on always-on paths via hybrid spiking execution (SpikingBrain-class, hardware permitting)
+ 
+
+ 
+ 
+ 
+
+ 
+ Every headline number is reported with its ablation twin (organ removed) and its baseline
+ twin (post-hoc probe / learned router / i.i.d. replay at matched budget) — the associations
+ in §02 are only validated by the differences.
+ 
+
+ 
+ 07 · Plan
+ Three years, four phases, modest compute
+
+ 
+
+ 
+ PHASE 0
+mo 0–6
+ 
+ 
+ Instruments before organs. Ship the Confabulation Battery and run it on
+ frontier and open models (the field's first per-organ confabulation profiles — standalone
+ publication). Build the calibrated surprise estimator on an open 1–3B backbone and
+ validate gate 1 (surprise-driven depth) alone. Compute: single 8×H100-class node.
+ 
+
+ 
+
+ 
+
+ 
+ PHASE 1
+mo 6–18
+ 
+ 
+ Hippocampus and clock, separately. A1 store and A2 temporal stack as
+ independent modules on 1–3B backbones; ablation-first science against the §02
+ predictions. Deliverables: two architecture papers + battery deltas. Compute: ~64 GPUs
+ sustained.
+ 
+
+ 
+
+ 
+
+ 
+ PHASE 2
+mo 18–30
+ 
+ 
+ Integration. Monitor (A3) trained over the typed store; sleep cycle (A4)
+ closing the CLS loop at 7–8B scale; the one-currency ablation. The integrated system is
+ the headline result: one model, all three goals, measured on pre-registered instruments.
+ Compute: ~128–256 GPUs at peaks.
+ 
+
+ 
+
+ 
+
+ 
+ PHASE 3
+mo 30–36
+ 
+ 
+ Scale and substrate. Scale the winning configuration; port always-on
+ paths to spiking/hybrid execution; simulate the analog control-bus split (companion P10)
+ with measured energy budgets. Team throughout: 4–6 researchers, 2 engineers, one
+ neuroscience advisor with lesion/neuropsych expertise.
+ 
+
+ 
+
+ 
+
+ 
+ 08 · Risks & limits
+ What we are honestly unsure about
+
+ 
+
+ 
+ 
+ Biology as inspiration, not authority. Every mechanism here is imported
+ for the problem it solves, not its implementation; each aim carries a kill
+ criterion, and the program's value survives partial failure because organs are modular and
+ the battery is organ-diagnostic. The companion review's filter applies throughout.
+ 
+
+ 
+ The crowded-field risk — including a famous neighbor. Agent-memory
+ systems (Letta, Mem0-class, TiMem, ComMem, ZenBrain…) ship weekly, and DeepSeek's
+ Engram module (Jan 2026, reportedly the V4 blueprint) has made dedicated memory
+ substrates mainstream. We keep the name deliberately: their Engram proves the substrate
+ pays at scale, and exemplifies the gap this program closes — it is a static, hash-addressed
+ n-gram store with no episodes, no provenance, no timestamps, no write policy, and no
+ consolidation; an engram table, not an engram loop. Differentiation is
+ architectural throughout: typed provenance inside the representation, time as a code not
+ metadata, a mode dial instead of prompt hygiene, and a closed loop into weights. If a 2027
+ system assembles all four first, the science (predictions, battery, ablations) is still
+ ours to publish — engineering priority is a risk; scientific priority is not, as of the
+ sweeps dated here.
+ 
+
+ 
+ Hallucination may not fully yield to architecture. Kalai et al. prove an
+ irreducible statistical floor and an incentive problem; we claim only the
+ architecture-addressable share (conflict, misattribution, temporal displacement,
+ uncalibrated fluency). If that share turns out small, the battery will say so early —
+ Phase 0 measures it before we build.
+ 
+
+ 
+ Reconsolidation is dangerous. The 2026 continuous-update corruption result
+ is a warning: a sleep cycle that rewrites memory can manufacture confabulations
+ wholesale. Hence quarantine-not-rewrite, provenance-preserving distillation, and
+ verification gates on replay — treated as safety engineering, not hygiene.
+ 
+
+ 
+ Efficiency numbers are hostage to hardware. Surprise-gated depth saves
+ FLOPs on any GPU; joule targets depend on spiking/analog substrates maturing on schedule.
+ We report both and conflate neither.
+ 
+
+ 
+ Scale transfer is unproven. All Phase 1–2 results live at 1–8B. The
+ known unknown: whether organ benefits grow, shrink, or invert at 100B — flagged, budgeted
+ for a scaling study, and not claimed in advance.
+ 
+
+ 
+
+ 
+ 09 · Sources
+ Load-bearing references
+
+ 
+
+ 
+ Memory neuroscience
+
+ 
+ McClelland, McNaughton & O'Reilly (1995) complementary learning systems; Kumaran, Hassabis & McClelland (2016) update — CLS as ANN theory
+
+ Howard lab — Cognitive computation in the Laplace domain; mPFC ramping cells implement a real Laplace transform (2024)
+
+ Hasselmo — encode/retrieve scheduling by theta phase and acetylcholine (evidence: Douchamps 2013); phase-specific manipulation (Siegle & Wilson 2014)
+
+ Mongillo, Barak & Tsodyks (2008) synaptic working memory; Stokes (2015) activity-silent WM; Lisman & Idiart (1995) theta–gamma slots
+
+ Mattar & Daw (2018) prioritized replay; Muller et al. (2016) rotating spindle waves; Benna & Fusi (2016) synaptic cascades; Josselyn & Tonegawa (2020) engram allocation
+
+ 
+ 
+
+ 
+ Confabulation & monitoring neuroscience
+
+ 
+ Schnider — orbitofrontal reality filtering; confabulators fail to suppress currently-irrelevant traces (the temporal-displacement subtest's source)
+
+ Johnson — source monitoring framework; Simons — reality monitoring and anterior PFC; Fleming — metacognitive confidence as second-order computation
+
+ Fuzzy-trace theory & DRM paradigm — gist vs. verbatim; DRM effects reproduced in LLMs (2025)
+
+ 
+ 
+
+ 
+ ML memory & consolidation (verified Aug 2026)
+
+ 
+ Titans — surprise-gated test-time memory · Memory Layers at Scale · DeepSeek Engram — conditional memory via scalable lookup (2026) · Sparse memory finetuning, low-forgetting (2026)
+
+ Test-time regression: sequence models as associative memory · LaCT — large-chunk test-time training · Ramsauer et al. (2020) Hopfield ≡ attention
+
+ Sleep-like consolidation into fast weights (2026) · TiMem — temporal-hierarchical consolidation · Episodic memory as the missing piece (position, 2025)
+
+ Continuously self-updated memories become faulty (2026) — the reconsolidation warning · LongMemEval-V2
+
+ 
+ 
+
+ 
+ Hallucination science (verified Aug 2026)
+
+ 
+ Kalai, Nachum, Vempala & Zhang — Why Language Models Hallucinate (statistical floor + incentive repair)
+
+ Farquhar et al. (Nature 2024) semantic entropy · Semantic-entropy probes · per-layer entropy lenses (2026) · real-time hallucinated-entity detection · HACK — certainty × knowledge axes
+
+ 
+ 
+
+ 
+ Efficiency (verified Aug 2026)
+
+ 
+ Attwell & Laughlin (2001) cortical energy budget; Levy & Baxter (1996) optimal sparse codes; Rao & Ballard (1999) predictive coding
+
+ SpikingBrain 1.0 · SpikingBrain 2.0 (2026) · SpikingMamba
+
+ Mixture-of-Depths · MoDA — mixture-of-depths attention (2026) · Spark Transformer — activation sparsity
+
+ 
+ 
+
+ 
+ Companion work
+
+ 
+ Waves Over Weights — the analog-cognition review this program extends (P2 wave-field WM, P6 wave-scheduled consolidation, P8 model-PCI, P9 control-plane monitor, P10 split-substrate hardware feed Aims 2–4)
+
+ Miller, Brincat & Roy (2026) Analog Cognition and Consciousness — the control-plane theory grounding the efficiency and monitoring signals
+
+ 
+ 
+
+ 
+ Prepared 22 Aug 2026, audited same day (structure, anchors, and 15 external citations
+ re-verified; DeepSeek Engram positioning added post-audit) · Method: three-pillar research
+ sweep (16 searches; every load-bearing 2025–26 citation independently verified), association
+ ledger construction, then proposal.
+ Gaps and “absent” statuses are claims about the indexed literature as of this date.
+ 
+Key: sienna = brain mechanism ·
+ teal = ML counterpart · ink = the proposed synthesis.
+ 
+

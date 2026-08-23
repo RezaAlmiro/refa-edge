@@ -1,0 +1,1097 @@
+
+Waves Over Weights
+
+ Research review & proposal set · August 2026
+ Waves Over Weights
+
+ 
+ A full reading of Miller, Brincat & Roy, “Analog Cognition and Consciousness,”
+ J. Neurosci. 46(33) e0711262026 — all 22 pages of argument and 200+ references —
+ mapped against the machine-learning and hardware literature it never cites,
+ with ten research directions that fall in the gap between the two fields.
+ 
+
+ 
+
+ 
+ neuroscience strand
+ machine-learning strand
+ their sum — “the interaction is the computation” (Fig. 6 of the paper)
+ 
+
+ 
+ Miller, Brincat and Roy argue that the brain is a hybrid computer: synaptic circuits store
+ knowledge digitally, while traveling electric-field waves select, route, and compute
+ over that knowledge in analog — and that consciousness is what a globally wave-organized
+ cortex feels like from inside. This review takes the paper apart claim by claim, rebuilds the
+ literature around it, and finds something the paper itself doesn't say: machine learning has
+ spent the last three years independently reinventing half of this theory — the wrong half —
+ while neither field cites the other.
+ 
+
+ 
+ 00The verdict in one panel
+
+ 01The paper, decomposed — eight claims, graded
+
+ 02The two literatures — and the citation gap between them
+
+ 03The mapping table — mechanism by mechanism
+
+ 04Ten connective leaps nobody has claimed
+
+ 05Where the mapping breaks
+
+ 06Sources
+
+ 
+
+ 
+ 00 · Verdict
+ Can this be mapped onto making neural networks better?
+
+ 
+
+ 
+ Yes — and more literally than the authors realize
+
+ 
+ The paper is a synthesis manifesto: it welds twenty-five years of the Miller lab's work —
+ mixed selectivity, working-memory bursts, predictive routing, traveling waves, cytoelectric
+ coupling, anesthesia dynamics — into one architecture. Synapses and spikes are the
+ storage and content layer; mesoscale electric-field waves are the control and computation
+ layer. No new data appears here; the new moves are conceptual: traveling waves as
+ operators that shift population activity between coding subspaces, wave interference as
+ literal analog computation, and consciousness as the globally integrated regime of that
+ wave system.
+ 
+
+ 
+ The mapping to AI is unusually concrete because deep learning already made the
+ paper's foundational split without naming it: pretrained weights store; in-context
+ activations select. What ML lacks is the paper's control layer — and here is the review's
+ central finding: ML has imported the brain's waves as content (memory in
+ wave-RNNs and oscillatory state-space models, binding in Kuramoto networks — four ICLR
+ oral-level papers since 2023) but not as control (spatial gating stencils,
+ wave-composed task programs, phase-multiplexed routing, a field medium). The control half is
+ the half Miller's group argues actually makes cognition. Meanwhile the paper cites five
+ computing works out of two hundred references and none of the ML strand. Two fields are
+ converging on one architecture, blind to each other — and the unclaimed middle is mapped in
+ §04 as ten concrete proposals, from an ephaptic side-channel for transformers to an
+ anesthesiology-derived coherence metric for agents.
+ 
+
+ 
+
+ 
+ 01 · The paper, decomposed
+ Eight claims, separately graded
+
+ 
+
+ 
+ The paper's rhetoric moves fast between settled findings and fresh speculation; mapping it
+ onto AI responsibly requires pulling those apart. Grades reflect the state of evidence as the
+ paper itself presents it, cross-checked against the cited record: ●●●●
+ established down to ●○○○ speculative.
+ 
+
+ 
+ C1
+ 
+ Cortical neurons are multifunctional, not specialized
+
+ ●●●● established · 20+ years, many labs
+ 
+ Mixed selectivity — single neurons whose tuning nonlinearly combines objects, order,
+ rules, rewards — is the norm from prefrontal to primary sensory cortex (Rigotti 2013;
+ Tye 2024). It expands representational capacity but creates the problem the whole theory
+ answers: who routes signals through neurons that mean different things in different
+ contexts? Synaptic weight changes are too slow, and a controller that addressed
+ individual synapses would need implausible knowledge of the wiring.
+ 
+
+ 
+
+ 
+
+ 
+ C2
+ 
+ Alpha/beta carries control; gamma carries content; they push–pull
+
+ ●●●○ strong · replicated across species and areas
+ 
+ Slower rhythms (deep layers, feedback paths) suppress and sculpt faster gamma and spiking
+ (superficial layers, feedforward paths). The spectrolaminar motif holds across mouse,
+ marmoset, macaque, human, and a dozen-plus regions (Mendoza-Halliday 2024). Theta acts as
+ a master clock that drags coupled beta/gamma across cortex. This is the paper's
+ best-evidenced structural fact.
+ 
+
+ 
+
+ 
+
+ 
+ C3
+ 
+ Spatial computing: control signals are inhibitory “stencils” over the cortical sheet
+
+ ●●○○ emerging · confirmed chiefly by the authors' own lab
+ 
+ Context and goals appear as spatial patterns of alpha/beta that mask where gamma/spiking
+ may express — so the same input lands in different subpopulations under different task
+ contexts, with no synaptic rewiring. The same stencil works for arbitrary content, and the
+ same population serves arbitrary tasks: compositional reuse in both directions. Chen et
+ al. 2026 (Curr. Biol.) confirmed key predictions in macaque PFC — including that
+ stencil–context mismatch predicts behavioral errors — and Fang et al. 2025, from
+ an independent lab, found oscillatory control of working-memory geometry. Mixed
+ selectivity (C1) then falls out as an explanation, not an axiom: a broadly tuned
+ neuron inside the stencil in one context and outside it in another looks
+ context-selective.
+ 
+
+ 
+
+ 
+
+ 
+ C4
+ 
+ Ephaptic coupling gives fields a direct, fast, non-synaptic handle on spiking
+
+ ●●○○ contested at cognitive scale · solid at cellular scale
+ 
+ Endogenous fields demonstrably bias spike timing where tissue is dense and neurons sit
+ near threshold (Anastassiou 2011; Han 2018; 2025 bioprinted-circuit validations). Fields
+ are continuous where spiking is sparse, reach millimeters where spikes are local, and
+ propagate effectively instantaneously. The paper adds two frontier extensions —
+ astrocytes (1 : 1.4 to neurons in humans) as non-spiking field contributors, and fields
+ tuning cytoskeletal infrastructure — that are real observations carrying heavy
+ speculative load. Whether ephaptic effects are a load-bearing computational channel
+ rather than a weak bias remains the theory's most attackable joint.
+ 
+
+ 
+
+ 
+
+ 
+ C5
+ 
+ Traveling waves are the state-transition operators — “spatial computing in motion”
+
+ ●○○○ hypothesis · new in this paper, correlational support
+ 
+ Waves sweep excitability across cortex like radar (phase predicts detection at the
+ swept location); they appear precisely when population codes reorganize — stimulus onset,
+ loading into working memory, movement initiation. The paper's genuinely novel proposal:
+ an alpha/beta traveling wave is the operator that moves population activity from
+ one orthogonal coding subspace to another (sensory → memory), and low-dimensional
+ “rotational dynamics” seen in population recordings are the spike-level shadow of waves
+ pulling activity along. Sleep's rotating waves organizing spike-timing-dependent
+ plasticity (Muller 2016) extends the same idea to consolidation.
+ 
+
+ 
+
+ 
+
+ 
+ C6
+ 
+ Wave interference performs analog computation
+
+ ●○○○ hypothesis · physically plausible, no direct neural demonstration
+ 
+ Where waves superpose they add and subtract — massively parallel, energy-cheap
+ computation in the medium itself. Two context-waves summing compute an intersection of
+ constraints (their Fig. 7: order × report-mode = four activation landscapes from two
+ signals). Waves act as “dynamic spatiotemporal basis functions” able to synthesize any
+ control landscape. Boldest concrete example: contour-evoked waves in visual cortex
+ interfering to compute the grassfire/medial-axis transform of a shape (Blum 1973). The
+ supporting citations are from physics and engineering — wave physics as a trainable RNN
+ (Hughes 2019), metamaterial computers, analog AI chips — because the neural demonstration
+ doesn't exist yet.
+ 
+
+ 
+
+ 
+
+ 
+ C7
+ 
+ Anesthetics converge on wave disorganization, not circuit shutdown
+
+ ●●●○ strong · convergent multi-drug evidence
+ 
+ Propofol (GABA), ketamine (NMDA), and dexmedetomidine (α2) act on unrelated receptors yet
+ converge on the same systems-level outcome: high-power, temporally misaligned slow-delta
+ waves and a fragmented cortex, with synaptic circuitry left largely intact (Bardon 2025;
+ Eisen 2026). Thalamic stimulation partially restores both waves and responsiveness. The
+ inference: consciousness tracks the integrity of large-scale wave organization, not any
+ particular neurochemistry. Methodologically this is the paper's most elegant argument —
+ many mechanistically different perturbations converging on one dynamical signature is
+ evidence the signature is load-bearing.
+ 
+
+ 
+
+ 
+
+ 
+ C8
+ 
+ Consciousness is the globally integrated wave-organized state
+
+ ●○○○ speculative · inherits every open problem of consciousness science
+ 
+ Positioned against the field: like Global Workspace, it wants flexible global
+ integration, but via field dynamics rather than spike broadcast; like IIT, it prizes
+ integrated self-influence, but locates it in wave dynamics rather than a posterior “hot
+ zone”; like higher-order and predictive-coding theories, top-down models organize
+ lower-level activity — here the very act of wave-borne top-down organization is
+ the conscious integration, with no separate observer. Notably absent from the reference
+ list: McFadden's CEMI and other electromagnetic-field theories of consciousness — the
+ closest prior claims that “the field is the thing.” The omission reads as deliberate
+ positioning: mechanism-first field computation, carefully fenced off from
+ field-consciousness metaphysics.
+ 
+
+ 
+
+ 
+
+ 
+ 02 · The two literatures
+ One architecture, converged on twice
+
+ 
+
+ 
+ Read as a literature review, the paper sits at the junction of five strands. Two of them —
+ the controversy ledger and the computing mirror — are where its blind spots, and therefore
+ the opportunities, live.
+ 
+
+ 
+ A The scaffolding: the lab's own quarter-century neuro
+
+ 
+ Nearly every mechanism has a Miller-lab origin paper: mixed selectivity (Warden 2007 →
+ Rigotti 2013), gamma/beta working-memory bursts (Lundqvist 2016), predictive routing
+ (Bastos 2020), interhemispheric handshakes (Brincat 2021), traveling waves in PFC working
+ memory (Bhattacharya 2022), spatial computing (Lundqvist 2023), cytoelectric coupling
+ (Pinotsis 2023), anesthesia dynamics with Emery Brown's group (Bastos 2021 → Bardon 2025 →
+ Eisen 2026), and the empirical capstone, Chen 2026. This is a strength (coherence) and a
+ weakness (evidence concentration — see strand E).
+ 
+
+ 
+
+ 
+ B The allies: rhythms-as-computation neuroscience neuro
+
+ 
+ The theory quilts together Buzsáki's Rhythms of the Brain, Fries's
+ communication-through-coherence, Lisman & Jensen's theta–gamma code, Singer's
+ binding-by-synchrony lineage, Ermentrout & Kleinfeld's wave mathematics, the
+ Muller–Sejnowski–Reynolds traveling-wave program, Jacobs's human intracranial waves, and
+ Fiebelkorn & Kastner's rhythmic attention. What the paper adds to this coalition is a
+ job description: the rhythms aren't just coordination or clocking — they are the control
+ plane and, at intersections, the ALU.
+ 
+
+ 
+
+ 
+ C The consciousness landscape neuro
+
+ 
+ GNWT, IIT, higher-order theories, Graziano's attention schema, the nested-observer model,
+ Hunt & Schooler's resonance theory — the paper triangulates among all of them (§C8).
+ Context the paper omits: the 2025 COGITATE adversarial collaboration left both GNWT and IIT
+ wounded, which is precisely the vacuum a mechanism-first wave theory is stepping into. Its
+ anesthesia evidence is its entry ticket; its liability is that “organized global
+ integration” is currently a description, not a measurement — a gap proposal P8 turns into
+ an instrument.
+ 
+
+ 
+
+ 
+ D The computing mirror — what the paper doesn't know it's describing ml / hardware
+
+ 
+ Out of 200+ references, five touch computing (an analog-computation survey, wave physics
+ as a trainable RNN, two analog-hardware chips, a metamaterial computer). Missing is the
+ entire convergent ML strand of the last three years:
+ 
+
+ 
+ Oscillator units: AKOrN — Kuramoto neurons whose phase-synchrony
+ binds features — improved object discovery, adversarial robustness, calibration, and
+ Sudoku-style reasoning (ICLR 2025 oral); complex-valued synchrony nets and rotating
+ features before it.
+
+ Waves as memory: Keller et al.'s wave-RNNs — traveling waves in the
+ hidden state act as a registry of the recent past, matching gated RNNs with fewer
+ parameters; waves integrating spatial information through time (2025).
+
+ Oscillatory state-space models: LinOSS — forced harmonic oscillators
+ as the recurrence, beating Mamba by ~2× on 50k-length sequences (ICLR 2025 oral);
+ damped D-LinOSS after it.
+
+ Synchrony as attention: Selective Synchronization Attention (Feb
+ 2026) — attention weights are Kuramoto phase-locking strengths; positional
+ encoding absorbed into oscillator frequencies. The first true bridge paper, and it cites
+ the physics, not the neuroscience.
+
+ Emergent interference algorithms: mechanistic interpretability's
+ grokking results — transformers forced to learn modular arithmetic spontaneously invent
+ Fourier features and trig-identity circuits. Gradient descent discovers phase-interference
+ computation on its own when the task demands it; nobody has promoted it to a primitive.
+
+ Hardware: photonic processors compute matrix products by wave
+ interference at 100+ TOPS/W; analog in-memory chips; oscillator/Ising machines —
+ and a deep historical root, Goto's 1950s parametron computers, which ran logic in
+ oscillation phase.
+
+ 
+ 
+ A discoverability accident deepens the mutual blindness: every natural search term is
+ squatted. “Neural fields” means coordinate-implicit representations in ML; “analog
+ computing” means in-memory matmul accelerators; “wave networks” is scattered across audio
+ models. The two literatures could not find each other by keyword if they tried.
+ 
+
+ 
+
+ 
+ E The controversy ledger — what the paper underplays neuro
+
+ 
+ Causality vs. bookkeeping. The oldest objection: oscillations as
+ exhaust, not engine. The paper cites the debate (Singer & Effenberger 2025) but
+ resolves it by assertion; the ephaptic channel (C4) is its causal escape hatch, and that
+ channel's cognitive-scale strength is exactly what's contested (Anastassiou & Koch's
+ own review title: “why bother?”).
+
+ Waves from delays. Davis 2021 showed traveling waves emerge naturally
+ from axonal conduction delays — cited approvingly, but it cuts both ways: waves may be
+ what recurrent tissue does, not what it's for.
+
+ Own-lab concentration. C3 and C5's direct evidence is
+ Miller-lab macaque data; Fang 2025 is the main independent support. The stencil readout
+ also depends on spatial LFP patterns, where volume conduction makes localization claims
+ delicate.
+
+ The consciousness chapter is the thinnest. Anesthetic convergence
+ shows organized waves are necessary-ish; nothing shown makes them
+ sufficient, and GNWT/IIT can absorb the same data.
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ NEUROSCIENCE
+ MACHINE LEARNING
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 2007
+ mixed selectivity
+ 2013
+ Rigotti: why neurons mix
+ 2016
+ WM gamma/beta bursts
+ 2020–21
+ predictive routing · anesthesia
+ 2022
+ PFC traveling waves
+ 2023
+ spatial computing · cytoelectric
+ 2026
+ this paper
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 2013
+ complex-valued synchrony
+ 2018–19
+ context gating · wave-physics RNN
+ 2023
+ wave-RNNs · rotating features
+ 2024–25
+ AKOrN · LinOSS (ICLR orals)
+ 2026
+ synchrony attention
+ 
+
+ 
+ 
+ ≈ zero mutual citation
+ (5 of 200+ refs touch computing)
+
+ 
+ 
+ 
+ 
+ the unclaimed
+ middle
+ P1 – P10
+ 
+ 
+
+ 
+ Two strands developing the same architecture in parallel. The neuroscience strand worked out
+ waves as control (stencils, routing, state transitions); the ML strand independently
+ built waves as content (memory, binding) and stopped there. The proposals in §04
+ live in the convergence neither strand has entered.
+ 
+
+ 
+
+ 
+ The asymmetry deserves emphasis because it defines where not-obvious work lives. When ML
+ borrowed traveling waves, it borrowed the sensory-cortex literature (Muller,
+ Sejnowski, Reynolds) — waves that carry and integrate stimulus content. The
+ executive reading of waves — Miller's stencils gating a multifunctional substrate,
+ contexts composed by wave summation, a theta clock scheduling it all — has no ML translation
+ at all. Everything in §04 grows from that missing half.
+ 
+
+ 
+ 03 · The mapping table
+ Mechanism by mechanism
+
+ 
+
+ 
+ Each row: the paper's mechanism, its nearest existing ML counterpart, an honest status, and
+ which §04 proposal it feeds. The absent rows are the point
+ of this document.
+ 
+
+ 
+ 
+ 
+ Paper mechanismNearest ML counterpartStatusFeeds
+
+ 
+ 
+ 
+ Mixed selectivity (C1)
+ Superposition & polysemantic units in transformers — the same discovery, made by interpretability researchers with the same initial surprise
+ convergent
+ P9
+ 
+
+ 
+ Circuits store / waves select (C2)
+ Weights store / in-context activations select. Deep learning's central split — never analyzed as an analog control system
+ unnamed
+ P4 P9
+ 
+
+ 
+ Orthogonal coding subspaces (C1/C5)
+ Task vectors, low-rank task subspaces, representation-geometry results
+ partial
+ P4
+ 
+
+ 
+ Alpha/beta stencil gating (C3)
+ FiLM modulation, context gating, MoE routers — none spatially structured, none composed from a wave basis
+ partial
+ P4 P5
+ 
+
+ 
+ Traveling waves as memory buffer (C5)
+ Wave-RNNs; LinOSS — whose oscillators are deliberately uncoupled (diagonal state matrix), so no waves can form
+ nascent
+ P2
+ 
+
+ 
+ Phase-synchrony binding (C2/C6)
+ AKOrN, rotating features, complex-valued nets, synchronization attention (2026)
+ nascent
+ P3 P5
+ 
+
+ 
+ Interference as computation (C6)
+ Photonic matmul (hardware, mature); grokking's emergent Fourier circuits (emergent, unexploited); additive steering vectors & task arithmetic (empirical superposition-composition, untheorized)
+ split
+ P3 P10
+ 
+
+ 
+ Ephaptic field channel (C4)
+ Nothing. Closest relatives — LayerNorm's crude global signal, workspace tokens — lack the medium, the locality, and the bidirectional coupling
+ absent
+ P1
+ 
+
+ 
+ Cross-frequency coupling; theta as master clock (C2)
+ Nothing. Multi-timescale RNNs exist; nested phase-scheduling of computation does not
+ absent
+ P5
+ 
+
+ 
+ Wave-gated plasticity windows; sleep replay (C5)
+ Replay buffers exist but sample i.i.d.; no spatial or phase scheduling of when parameters may learn
+ absent
+ P6
+ 
+
+ 
+ Anesthetic convergence; integration as measurable state (C7/C8)
+ No perturbational-complexity-style diagnostic exists for any AI system (verified against 2026 literature)
+ absent
+ P8
+ 
+
+ 
+ 20-watt analog efficiency argument (C6)
+ Analog/photonic hardware targets the matmul — the layer the brain does digitally. The brain spends its analog physics on control. The efficiency argument is aimed at the wrong layer
+ mistargeted
+ P10
+ 
+
+ 
+ 
+ 
+
+ 
+ 04 · The connective leaps
+ Ten proposals from the unclaimed middle
+
+ 
+
+ 
+ Each proposal names the two strands it fuses, why the spot is verifiably empty (checked
+ against the August 2026 literature), the cheapest first experiment, and the honest risk.
+ They are ordered within groups by tractability — several are a single-GPU project.
+ 
+
+ Architecture
+
+ 
+ P1The Ephaptic Channel
+
+ field coupling · astrocytes (C4) ↔ a second, non-synaptic pathway for ANNs
+
+ 
+ The leap
+ 
+ ANNs have exactly one communication mechanism: weighted connections — the brain's
+ “synapses.” Give a network the brain's other channel: a low-dimensional
+ continuous field over a 2D embedding of the units, governed by a learned damped-wave
+ PDE. Units write into the field (a leaky projection of their activations) and read from
+ it (an additive pre-activation bias) every step — slow, diffuse, spatial, bidirectional.
+ An “astrocyte variant” adds dedicated non-spiking units that only shape the field, mirroring
+ the paper's argument from the 1 : 1.4 human astrocyte ratio.
+ 
+ Why it's open
+ 
+ A literature check confirms zero ML implementations of bidirectional activation–field
+ coupling; ephaptic modeling lives entirely in computational neuroscience. The “neural
+ fields” name collision (§02-D) actively hides the direction from search.
+ 
+ First experiment
+ 
+ Bolt the field onto a small ViT or RNN; train on object-binding and rapid task-switching
+ suites. Ablate each coupling direction. Decode task context from the field alone — if the
+ stencil story is right, it should be linearly readable there.
+ 
+ Success looks like
+ 
+ Binding/switching gains at near-zero parameter cost, plus an interpretable, steerable
+ control surface — you can perturb the field at inference (“tACS for transformers”) and
+ watch behavior shift predictably.
+ 
+ Risk
+ 
+ Collapses into a fancy normalization layer. The kill criterion: if spatial structure in
+ the field carries no decodable task information, the mechanism isn't doing what the
+ theory says.
+ 
+ 
+ 
+
+ 
+ P2Wave-Field State Spaces
+
+ traveling waves as memory (C5) ↔ LinOSS / SSMs
+
+ 
+ The leap
+ 
+ LinOSS won an ICLR oral with harmonic oscillators as the recurrence — but its state
+ matrix is diagonal: every oscillator is deliberately isolated, because uncoupled dynamics
+ is what makes the parallel scan fast. No coupling, no traveling waves, none of the
+ wave-borne memory Keller's wave-RNNs demonstrated. Couple the oscillators into a lattice
+ and the latent state becomes a wave field.
+ 
+ Why it's open
+ 
+ The field walked away from coupling for speed reasons, not scientific ones. And there's
+ a free lunch nobody has picked up: make the coupling circulant
+ (translation-invariant on a ring/torus) and the FFT diagonalizes it — traveling waves
+ become the eigenmodes, and the parallel scan survives in spectral space. Wave memory at
+ SSM cost.
+ 
+ First experiment
+ 
+ Circulant-coupled LinOSS vs. LinOSS, Mamba, and wave-RNNs on Long Range Arena plus
+ streaming recall; visualize the latent for emergent wavefronts (recency should be
+ encoded as distance from the front).
+ 
+ Success looks like
+ Matched or better long-sequence accuracy with fewer parameters and an inspectable, physically meaningful memory.
+ Risk
+ Coupling could hurt optimization stability; D-LinOSS's learned damping is the natural regularizer to port.
+ 
+ 
+
+ 
+ P3Interference Attention
+
+ wave summation as computation (C6) ↔ holographic memory · grokking's Fourier circuits
+
+ 
+ The leap
+ 
+ Attention retrieves by comparing every query against every key — O(n²) explicit
+ bookkeeping. Interference retrieves by superposition: encode key–value pairs as phasors
+ summed into one hologram (vector-symbolic binding), retrieve by constructive
+ interference. The KV cache becomes a fixed-size wave state.
+ 
+ Why it's open
+ 
+ The pieces have never been assembled: vector-symbolic architectures proved phasor
+ binding works decades ago; grokking interpretability proved gradient descent
+ spontaneously invents Fourier-interference algorithms when a task demands it;
+ Selective Synchronization Attention (Feb 2026) just replaced dot-products with Kuramoto
+ phase-locking — citing the physics, not the neuroscience, and not the VSA math either.
+ Three communities, one mechanism, no synthesis.
+ 
+ First experiment
+ 
+ Hybrid heads (half dot-product, half phasor-holographic) on associative-recall
+ synthetics and induction-head tasks, then perplexity at matched FLOPs; chart where
+ superposition crosstalk (the known VSA capacity limit) bites vs. context length.
+ 
+ Success looks like
+ Comparable recall with O(1) memory per head and better length extrapolation — positional information living in phase, as the SSA result already hints.
+ Risk
+ Crosstalk scales badly with items stored; the contribution is mapping the regime where interference wins, not claiming it always does.
+ 
+ 
+
+ 
+ P4Spectral Stencils
+
+ spatial computing · Fig. 7 wave algebra (C3/C6) ↔ task arithmetic · FiLM · continual learning
+
+ 
+ The leap
+ 
+ The paper's control theory, translated literally: a slow controller network emits
+ coefficients over a band-limited spatial wave basis; synthesis produces a smooth gating
+ field over the fast network's unit lattice; contexts compose by adding
+ coefficients — the paper's Fig. 7, where two context-waves sum to four task
+ programs. ML already has the receipts that additive composition works: task arithmetic
+ and steering vectors compose by vector addition, unexplained. This gives that empirical
+ magic its missing theory — those vectors are flat stencils — and its missing structure:
+ make them spatial, band-limited, and cheap.
+ 
+ Why it's open
+ 
+ Gating exists everywhere (FiLM, adapters, MoE); spatially structured, wave-composed,
+ low-frequency gating exists nowhere — ML gating has no topology because ML units
+ have no locations. Giving units locations is the unexamined prerequisite the brain gets
+ for free.
+ 
+ First experiment
+ 
+ Continual-learning and compositional-generalization suites vs. FiLM/LoRA/context-gating
+ baselines at matched parameters; then the closing-the-loop test — measure whether gated
+ units reproduce PFC statistics: mixed-selectivity fractions, subspace
+ orthogonalization, error-from-stencil-mismatch.
+ 
+ Success looks like
+ 
+ Catastrophic-forgetting resistance (context gating already showed this in 2018) plus
+ zero-shot task composition by coefficient addition — and, if the loop closes, an ANN
+ result that counts as evidence for the neuroscience.
+ 
+ Risk
+ Band-limiting may be the wrong inductive bias for non-spatial tasks; the ablation against unconstrained gating isolates exactly what the wave structure buys.
+ 
+ 
+
+ 
+ P5The Thalamic Clock
+
+ theta master timing · communication through coherence (C2) ↔ mixture-of-experts routing
+
+ 
+ The leap
+ 
+ Every MoE router in the 2026 literature is a feedforward classifier scoring tokens.
+ The brain routes differently: a subcortical pacemaker sets phase relationships, and
+ regions exchange information only when their excitability windows align —
+ communication through coherence. Translation: give experts oscillatory phases set by a
+ small Kuramoto coordinator; inter-expert messages pass in proportion to phase alignment;
+ routing becomes a dynamical schedule rather than a per-token decision, and
+ frequency-division lets multiple token streams share the same experts without
+ interference.
+ 
+ Why it's open
+ A targeted search of 2025–26 MoE routing work finds hierarchical, eigenbasis, self-routing variants — and no dynamical or phase-based coordination at all.
+ First experiment
+ Small MoE with phase-gated expert messaging on multi-task suites with known interference structure; measure cross-task contamination vs. learned-router baselines, plus AKOrN-style robustness side-effects.
+ Success looks like
+ Lower cross-task interference and emergent expert scheduling — specialization in time, not just in parameters.
+ Risk
+ Coupled-oscillator training instability; AKOrN's discretization tricks and SSA's closed-form steady state are the two available stabilizers.
+ 
+ 
+
+ Learning & dynamics
+
+ 
+ P6Wave-Scheduled Consolidation
+
+ rotating sleep waves gate plasticity (C5) ↔ replay buffers · continual learning
+
+ 
+ The leap
+ 
+ Muller 2016: rotating waves during sleep spindles sweep cortex, opening
+ spike-timing-dependent-plasticity windows in an organized spatial sequence — consolidation
+ is scheduled by a wave. ML replay is i.i.d.: sample uniformly, update everywhere.
+ Translation: phase-gate learning rates — a slow wave over the unit/parameter lattice
+ determines which region may consolidate now — and order replay along the wave's path.
+ A second, data-free variant mirrors retinal waves: pretrain on self-generated traveling-wave
+ activity as a structural curriculum before any data arrives.
+ 
+ Why it's open
+ Cyclical learning-rate schedules vary plasticity in time only; nothing varies it over network space, and wave-pretraining exists only as a couple of vision-neuroscience studies.
+ First experiment
+ Continual-learning benchmarks: phase-gated learning rates + wave-ordered replay vs. EWC and uniform replay; ablate the spatial component against pure schedules.
+ Success looks like
+ Less interference at equal replay budget — consolidation that doesn't overwrite what a concurrent region is protecting.
+ Risk
+ May reduce to a rediscovery of cyclical schedules; the spatial term must demonstrably earn its keep or the proposal dies.
+ 
+ 
+
+ 
+ P7Latent Itinerancy
+
+ distraction-and-return trajectories (C5) ↔ latent chain-of-thought
+
+ 
+ The leap
+ 
+ Batabyal 2026 (cited in the paper): distraction knocks PFC population activity off its
+ trajectory, and wave dynamics shepherd it back. Latent reasoning research (COCONUT and
+ successors) currently treats continuous thought as a sequence of opaque vectors with no
+ dynamical theory of stability. Model reasoning steps as metastable states in a wave
+ field, transitions driven by a control field — thought as itinerancy between attractors
+ rather than token emission.
+ 
+ Why it's open
+ The latent-reasoning community optimizes benchmarks, not dynamics; nobody has asked what makes a latent thought robust, and the neuroscience just handed over both the concept and the experimental design.
+ First experiment
+ Diagnostic before architecture: perturb latent reasoning states mid-chain with calibrated noise, measure return-to-trajectory vs. derailment as a function of where in the chain the hit lands — the direct ML mirror of the monkey distraction experiment.
+ Success looks like
+ A stability map of latent reasoning (which steps are attractor-protected, which are knife-edges), then architectures that widen the basins.
+ Risk
+ Metastability may not be how flat transformers do it at all — a null result here is itself a finding about how un-brain-like latent reasoning is.
+ 
+ 
+
+ Evaluation & interpretability
+
+ 
+ P8Anesthesiology for AI
+
+ anesthetic convergence · PCI (C7) ↔ agent-coherence evaluation
+
+ 
+ The leap
+ 
+ Consciousness science solved a problem AI evaluation still has: how to measure whether a
+ system is globally integrated without asking it. Zap cortex with TMS, compress
+ the echo — the perturbational complexity index cleanly separates awake from anesthetized
+ brains. Port it: perturb a model's activations mid-inference with standardized pulses,
+ record the propagation pattern across layers and timesteps, compress it. High complexity
+ = the perturbation was integrated and differentiated; low = it either died
+ locally (fragmentation) or exploded uniformly (stereotypy).
+ 
+ Why it's open
+ Verified against the 2026 literature: PCI has been applied to brain simulations, never to LLMs or agents. It is architecture-agnostic, training-free, and cheap.
+ First experiment
+ 
+ Compute model-PCI across checkpoints, quantization levels, and context lengths; test the
+ signature hypothesis — that PCI drops before task metrics do as a model is
+ degraded (pruning, quantization, context overflow), making it an early-warning gauge for
+ long-horizon agent incoherence. Adopt the paper's own methodology: many mechanistically
+ different perturbations converging on one dynamical signature means the signature is
+ load-bearing.
+ 
+ Success looks like
+ A leading indicator for agent breakdown that needs no benchmark and no ground truth.
+ Risk
+ Complexity measures are notoriously confoundable by scale and architecture; matched-checkpoint comparisons are the discipline that keeps it honest.
+ 
+ 
+
+ 
+ P9Wave Interpretability
+
+ stencil mismatch predicts errors (C3) ↔ mechanistic interpretability
+
+ 
+ The leap
+ 
+ Mechanistic interpretability is overwhelmingly static — features, circuits, weights. The
+ first dynamical studies (Fernando & Guitchounts 2025: residual-stream units trace
+ periodic orbits; attractor-like lower layers) found oscillation without a framework for
+ what it's for. This paper supplies the framework: look for a slow/fast
+ decomposition of residual dynamics — a low-frequency control component gating a
+ high-frequency content component — the spectral signature of stencils. Then run Chen
+ 2026's monkey logic on models: their stencil–context mismatch predicted behavioral errors
+ before the response; the analog is predicting hallucinations from control-subspace
+ geometry before generation.
+ 
+ Why it's open
+ The dynamical-interpretability thread is months old, tiny, and has not met the control-theoretic reading; hallucination detection today reads outputs and probes, not control dynamics.
+ First experiment
+ Koopman/DMD-style mode decomposition over layer-time activation trajectories; correlate slow-mode misalignment (context vs. content) with factuality failures on standard hallucination sets.
+ Success looks like
+ An online, output-independent hallucination early-warning signal — and independent evidence that trained transformers contain a control plane worth naming.
+ Risk
+ Depth-as-time is not time; the decomposition may not transfer across prompts. Start with recurrent-ish settings (long generation) where real temporal dynamics exist.
+ 
+ 
+
+ Hardware
+
+ 
+ P10Split-Substrate Hardware
+
+ digital storage + analog coordination (C6) ↔ photonic / analog accelerators
+
+ 
+ The leap
+ 
+ The entire analog-hardware industry targets the matmul — the layer the brain implements
+ with discrete spikes and synapses. The brain spends its analog physics on the
+ other layer: control, routing, gating. The paper's architecture, taken
+ seriously as a hardware spec, is a split substrate — digital cores for storage and
+ content, with an analog interference control bus: a photonic or RF layer that
+ synthesizes gating fields (the spectral stencils of P4) by superposition at light speed
+ and near-zero marginal energy, broadcast to the digital cores without per-step
+ conversion. A second, self-contained piece: an optical front-end that computes the
+ grassfire/medial-axis transform by literal wave interference — shape-skeleton features
+ that directly attack vision models' documented texture bias.
+ 
+ Why it's open
+ Photonics roadmaps (100+ TOPS/W demonstrations) are all matmul accelerators; neuromorphics is all spikes. Nobody builds analog control over digital content — the one split the biology actually endorses. The parametron — 1950s phase-logic computing — is the forgotten ancestor waiting to be cited.
+ First experiment
+ No fab needed: simulate the split — P4's spectral stencils with control-path costs set to photonic energy budgets — and publish the systems argument; the medial-axis front-end can be prototyped in simulation against texture-bias benchmarks immediately.
+ Success looks like
+ An architecture paper that redirects some fraction of analog-hardware effort from the matmul war to the uncontested control plane.
+ Risk
+ Analog dreams die at the converter. The proposal lives or dies on keeping the control field analog end-to-end — broadcast gating natively, never digitizing per step.
+ 
+ 
+
+ 
+ 05 · Honest limits
+ Where the mapping breaks
+
+ 
+
+ 
+ 
+ The epiphenomenon risk transfers asymmetrically. If waves turn out to be
+ cortical exhaust, the neuroscience theory collapses — but the ML proposals don't: an
+ inductive bias justified by benchmarks needs no biological license. This asymmetry makes
+ §04 cheap insurance: each proposal is simultaneously an engineering bet and a test of the
+ theory. If spectral stencils (P4) fail to produce mixed selectivity, that's evidence
+ against spatial computing, publishable either way.
+ 
+
+ 
+ Translate problems, not mechanisms. Some brain solutions are workarounds
+ for constraints ANNs don't have — millisecond synapses, wiring cost, no weight sharing, no
+ global learning signal. The filter used throughout §04: import the problem waves
+ solve (routing without a homunculus, binding, scheduling, coordination) and let the
+ mechanism re-derive itself in silico. Copying wave physics into a GPU for its own sake
+ imports the costume, not the actor.
+ 
+
+ 
+ The energy argument does not survive simulation. Waves computed in
+ float32 cost FLOPs like everything else. The 20-watt story cashes out only in physical
+ substrates (P10); software claims (P1–P7) must win on capability, robustness, or
+ interpretability instead — and are framed to do so.
+ 
+
+ 
+ Consciousness is not an engineering target here. What transfers is the
+ functional skeleton — global integration as a measurable regime (P8). Nothing in this
+ document bears on phenomenal experience, and the paper's own consciousness chapter is its
+ most speculative (C8).
+ 
+
+ 
+ Evidence concentration is real. The stencil results rest chiefly on
+ Miller-lab primate data with one strong independent support (Fang 2025); ephaptic
+ causality at cognitive scale is inferred, not shown. Anyone building on C3–C6 should track
+ the replication record — and P4/P9's closing-the-loop tests are designed to feed it.
+ 
+
+ 
+ The two-hues caveat. This review's sharpest claim — ML imported waves as
+ content but not control — is an argument from absence, verified by search but always
+ vulnerable to an unindexed preprint. It is stated as of August 2026.
+ 
+
+ 
+
+ 
+ 06 · Sources
+ What this review is built on
+
+ 
+
+ 
+ The paper and its record
+
+ 
+ Miller, Brincat & Roy (2026). Analog Cognition and Consciousness. J. Neurosci. 46(33) — read in full from the author PDF (39 pp.). Coverage: Picower Institute, MedicalXpress.
+
+ Key primary work inside it: Rigotti 2013 (mixed selectivity) · Lundqvist 2023 (spatial computing) · Chen 2026 (stencil confirmation) · Bhattacharya 2022 (PFC traveling waves) · Pinotsis 2023 (cytoelectric coupling) · Bardon 2025 & Eisen 2026 (anesthetic convergence) · Mendoza-Halliday 2024 (spectrolaminar motif) · Muller 2018 (traveling-wave review) · Fang 2025 (independent support).
+
+ 
+ 
+
+ 
+ The oscillatory ML strand (verified Aug 2026)
+
+ 
+ AKOrN — Artificial Kuramoto Oscillatory Neurons (Miyato, Löwe, Geiger, Welling; ICLR 2025 oral)
+
+ Traveling Waves Encode the Recent Past (Keller et al.) · Traveling Waves Integrate Spatial Information Through Time
+
+ LinOSS — Oscillatory State-Space Models (Rusch & Rus; ICLR 2025 oral; diagonal/uncoupled — verified) · D-LinOSS
+
+ Selective Synchronization Attention (Hays, Feb 2026 — Kuramoto phase-locking as attention; verified)
+
+ Rotating Features for Object Discovery · Complex-valued synchrony networks (Reichert & Serre 2013)
+
+ 
+ 
+
+ 
+ Control, composition & reasoning in ML
+
+ 
+ Context-dependent gating vs. catastrophic forgetting (Masse et al., PNAS 2018)
+
+ Task arithmetic (Ilharco et al.) — additive composition, the empirical mirror of wave summation · Compositional energy-based generation (Du et al.)
+
+ Shared global workspace for neural modules (Goyal et al.) · COCONUT — latent chain-of-thought (Hao et al.)
+
+ 
+ 
+
+ 
+ Interpretability
+
+ 
+ Transformer Dynamics (Fernando & Guitchounts 2025 — periodic orbits in the residual stream; verified) · Residual-stream spectral geometry (2026)
+
+ Progress measures for grokking (Nanda et al.) — emergent Fourier/trig circuits · Toy models of superposition (Elhage et al.)
+
+ 
+ 
+
+ 
+ Hardware & physical computing
+
+ 
+ Wave physics as an analog RNN (Hughes 2019) — the one ML-adjacent paper Miller et al. cite
+
+ IBM analog-AI speech chip (Ambrogio 2023) · Programmable wave-based metastructure computing (Tzarouchis 2025) · Integrated photonic neuromorphic computing review (2025)
+
+ Historical root: Goto's parametron (1950s phase-encoded logic) — uncited by both strands
+
+ 
+ 
+
+ 
+ Consciousness science instruments
+
+ 
+ Perturbational Complexity Index (Massimini lab) — verified as never applied to LLMs/agents as of Aug 2026
+
+ Consciousness in AI: insights from the science of consciousness (Butlin, Long et al.) · Deep learning and the Global Workspace (VanRullen & Kanai) · COGITATE adversarial collaboration (Nature, 2025)
+
+ 
+ 
+
+ 
+ Prepared 21 Aug 2026 · Method: full read of the author PDF (39 pp., 200+ refs) → claim
+ decomposition → 8 targeted literature sweeps → 6 load-bearing citations independently
+ re-verified (LinOSS coupling structure, AKOrN venue, SSA content, Transformer Dynamics
+ authorship, PCI-for-AI absence, thalamic-MoE absence). Gaps stated as of this date.
+ 
+Two-hue key throughout: sienna = neuroscience strand · teal = machine-learning strand. Where they sum, that's the proposal.
+ 
+
