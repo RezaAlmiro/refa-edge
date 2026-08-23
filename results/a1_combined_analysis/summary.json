@@ -1,0 +1,271 @@
+{
+  "groups": {
+    "preregistered": {
+      "memory_only": {
+        "current": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.50048828125,
+            "q25": 0.495849609375,
+            "q75": 0.51171875
+          },
+          "unseen_count_accuracy": {
+            "median": 0.5051679586563307,
+            "q25": 0.4864657826418445,
+            "q75": 0.5149595731990191
+          },
+          "solved_runs_at_0.80": 0,
+          "min_eigenvalue": {
+            "median": 0.17313626408576965,
+            "q25": 0.10967390239238739,
+            "q75": 0.2139529287815094
+          },
+          "all_contraction_certified": true
+        },
+        "safe": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.49755859375,
+            "q25": 0.493896484375,
+            "q75": 0.504150390625
+          },
+          "unseen_count_accuracy": {
+            "median": 0.4955887510761088,
+            "q25": 0.4855079282357142,
+            "q75": 0.5067491155831352
+          },
+          "solved_runs_at_0.80": 0,
+          "min_eigenvalue": {
+            "median": 0.30579373240470886,
+            "q25": 0.27109570801258087,
+            "q75": 0.3401411175727844
+          },
+          "all_contraction_certified": true
+        },
+        "expressive": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.703125,
+            "q25": 0.51318359375,
+            "q75": 0.926025390625
+          },
+          "unseen_count_accuracy": {
+            "median": 0.7026282732631172,
+            "q25": 0.5122985546045604,
+            "q75": 0.9185035495552307
+          },
+          "solved_runs_at_0.80": 5,
+          "min_eigenvalue": {
+            "median": -0.4515632688999176,
+            "q25": -0.9961818009614944,
+            "q75": 0.1271941214799881
+          },
+          "all_contraction_certified": true
+        }
+      },
+      "full": {
+        "current": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.50439453125,
+            "q25": 0.49658203125,
+            "q75": 0.50732421875
+          },
+          "unseen_count_accuracy": {
+            "median": 0.5000256375744291,
+            "q25": 0.4860641340454738,
+            "q75": 0.5098176569751169
+          },
+          "solved_runs_at_0.80": 0,
+          "min_eigenvalue": {
+            "median": 0.40076717734336853,
+            "q25": 0.32395724952220917,
+            "q75": 0.4435112923383713
+          },
+          "all_contraction_certified": true
+        },
+        "safe": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.50146484375,
+            "q25": 0.496826171875,
+            "q75": 0.507568359375
+          },
+          "unseen_count_accuracy": {
+            "median": 0.4937404599332902,
+            "q25": 0.4902910610004582,
+            "q75": 0.5078796724789929
+          },
+          "solved_runs_at_0.80": 0,
+          "min_eigenvalue": {
+            "median": 0.4479067921638489,
+            "q25": 0.3885572999715805,
+            "q75": 0.4650789052248001
+          },
+          "all_contraction_certified": true
+        },
+        "expressive": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.50439453125,
+            "q25": 0.498779296875,
+            "q75": 0.51904296875
+          },
+          "unseen_count_accuracy": {
+            "median": 0.5037783375314862,
+            "q25": 0.4900012626661195,
+            "q75": 0.5143514008955992
+          },
+          "solved_runs_at_0.80": 2,
+          "min_eigenvalue": {
+            "median": 0.2575167715549469,
+            "q25": -0.7868862301111221,
+            "q75": 0.3922404944896698
+          },
+          "all_contraction_certified": true
+        }
+      }
+    },
+    "gate_init_followup": {
+      "memory_only": {
+        "current": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.498046875,
+            "q25": 0.487548828125,
+            "q75": 0.504150390625
+          },
+          "unseen_count_accuracy": {
+            "median": 0.4885034781587293,
+            "q25": 0.4823584478778658,
+            "q75": 0.5009776101325397
+          },
+          "solved_runs_at_0.80": 0,
+          "min_eigenvalue": {
+            "median": 0.17677831649780273,
+            "q25": 0.1086871325969696,
+            "q75": 0.21370601654052734
+          },
+          "all_contraction_certified": true
+        },
+        "safe": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.4990234375,
+            "q25": 0.48486328125,
+            "q75": 0.5107421875
+          },
+          "unseen_count_accuracy": {
+            "median": 0.4901711620766504,
+            "q25": 0.4840993203687504,
+            "q75": 0.5087791873506159
+          },
+          "solved_runs_at_0.80": 0,
+          "min_eigenvalue": {
+            "median": 0.24538996815681458,
+            "q25": 0.18406929075717926,
+            "q75": 0.2794046700000763
+          },
+          "all_contraction_certified": true
+        },
+        "expressive": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.892578125,
+            "q25": 0.851806640625,
+            "q75": 0.943115234375
+          },
+          "unseen_count_accuracy": {
+            "median": 0.890478906288191,
+            "q25": 0.8375356720834473,
+            "q75": 0.9346563309585493
+          },
+          "solved_runs_at_0.80": 8,
+          "min_eigenvalue": {
+            "median": -0.9949282705783844,
+            "q25": -0.9992344081401825,
+            "q75": -0.9908730536699295
+          },
+          "all_contraction_certified": true
+        }
+      },
+      "full": {
+        "current": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.5,
+            "q25": 0.484375,
+            "q75": 0.50732421875
+          },
+          "unseen_count_accuracy": {
+            "median": 0.5012655787303675,
+            "q25": 0.4837594696969697,
+            "q75": 0.513556426456593
+          },
+          "solved_runs_at_0.80": 0,
+          "min_eigenvalue": {
+            "median": 0.30188947916030884,
+            "q25": 0.22118766605854034,
+            "q75": 0.3308386206626892
+          },
+          "all_contraction_certified": true
+        },
+        "safe": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.4970703125,
+            "q25": 0.48291015625,
+            "q75": 0.50244140625
+          },
+          "unseen_count_accuracy": {
+            "median": 0.5012987012987014,
+            "q25": 0.48116978361557505,
+            "q75": 0.5035209396258503
+          },
+          "solved_runs_at_0.80": 0,
+          "min_eigenvalue": {
+            "median": 0.35532280802726746,
+            "q25": 0.3101634830236435,
+            "q75": 0.37422019243240356
+          },
+          "all_contraction_certified": true
+        },
+        "expressive": {
+          "runs": 10,
+          "ood_accuracy": {
+            "median": 0.9296875,
+            "q25": 0.9208984375,
+            "q75": 0.9345703125
+          },
+          "unseen_count_accuracy": {
+            "median": 0.9218491450634307,
+            "q25": 0.9182474050416334,
+            "q75": 0.9257699963988476
+          },
+          "solved_runs_at_0.80": 9,
+          "min_eigenvalue": {
+            "median": -0.9944881796836853,
+            "q25": -0.9960913956165314,
+            "q75": -0.9940553307533264
+          },
+          "all_contraction_certified": true
+        }
+      }
+    }
+  },
+  "followup_preregistered_rule": {
+    "all_memory_expressive_negative_fraction_at_least_0.90": true,
+    "memory_expressive_median_at_least_0.80": true,
+    "memory_expressive_q25_at_least_0.75": true,
+    "memory_margin_over_best_control_at_least_0.15": true,
+    "passed": true
+  },
+  "posthoc_reflection_proximity": {
+    "threshold": "min_transition_eigenvalue <= -0.99",
+    "near_reflection_runs": 23,
+    "near_reflection_solved_at_0.80": 23,
+    "away_from_reflection_runs": 17,
+    "away_from_reflection_solved_at_0.80": 1,
+    "status": "post_hoc_descriptive_not_confirmatory"
+  }
+}

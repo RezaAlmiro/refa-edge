@@ -1,0 +1,38 @@
+seed: 201
+device: cpu
+task:
+  name: keyed_parity
+  train_samples: 2048
+  val_samples: 512
+  test_samples: 1024
+  seq_len: 65
+  train_history_len: 16
+  test_history_len: 64
+  num_entities: 16
+  num_relations: 8
+  num_active_keys: 2
+  revision_probability: 0.70
+model:
+  d_model: 32
+  memory_rank: 16
+  num_banks: 1
+  num_layers: 1
+  num_heads: 4
+  dropout: 0.0
+  write_gate_mode: current
+  readout_mode: memory_only
+  track_spectral_diagnostics: false
+  write_gate_bias_init: 2.0
+train:
+  epochs: 30
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.0
+  grad_clip: 1.0
+  amp: false
+  num_workers: 0
+experiment:
+  seeds: [201, 202, 203, 204, 205, 206, 207, 208, 209, 210]
+  gate_modes: [current, safe, expressive]
+  readout_modes: [memory_only, full]
+output_dir: results/a1_gate_init_followup

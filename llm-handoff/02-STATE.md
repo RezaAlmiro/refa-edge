@@ -57,7 +57,13 @@ The three organizing discoveries:
 
 ## What has NOT been done — read this twice
 
-- **Zero experiments have run.** Every leap, ranking, and payoff estimate is hypothesis.
+- **A1/K3 is the only kill experiment run.** The queued alternating-polarity task was
+  rejected for label leakage and replaced by keyed write-count parity. Default
+  expressive gating was bimodal (5/10 memory-only seeds solved); a separately
+  preregistered spectrum-derived gate initialization reached median length-64 accuracy
+  0.893 versus ~0.50 controls, and full REFA reached 0.930. This validates a small
+  spectral mechanism, not the wider architecture. See
+  `../docs/A1-KEYED-PARITY-RESULTS.md`.
 - The founding bet (typed opposition banks beat a signed single store) is untested.
 - The symbolic→text boundary (certified guarantees currently need exact (s,r,o) keys)
   is unaddressed.
@@ -74,3 +80,5 @@ The three organizing discoveries:
 - Published artifacts (claude.ai, owner's account): *The Engram Loop*, *Waves Over
   Weights*, *The Delta Ledger* (the 08-23 synthesis).
 - Running log + next-actions queue: `../engram-loop-handoff/HANDOFF.md`.
+- Immediate next decision: A2/K1 typed banks versus a signed single store. The frozen
+  design constraints and kill rule are in `../docs/NEXT-RESEARCH-STATE.md`.

@@ -4,13 +4,21 @@ Conventions: every experiment ≥10 seeds, report medians+IQR; calibration via s
 every mechanism behind an exact or certified gate; raw JSON + config + seed + hardware
 + commit hash preserved. Hardware assumption: one RTX 2060 6 GB (or better).
 
+**Immediate next state (after A1): A2/K1.** Build the fair signed-store control and
+freeze the revision/conflict/abstention battery before confirmatory seeds. Exact design
+constraints and the kill rule: `../docs/NEXT-RESEARCH-STATE.md`. Substrate optimization
+is deferred until this founding architectural bet has data.
+
 ## Lane A — Kill experiments (first; nothing else has standing until these run)
 
-- [ ] **A1 (K3, cheapest first): parity-of-negations.** Add the task generator to
-      `data.py` (alternating supported/opposed chains, label = parity; train n=16,
-      test n=64) and the dual-mode write gate to `refa.py` (safe: β/(1+β); expressive:
-      (1+λ)·sigmoid). Accept: expressive solves & extrapolates; current/safe at chance.
-      Runtime: ~2 h.
+- [x] **A1 (K3): corrected keyed parity.** The queued alternating-polarity task leaked
+      its label through the final event, so the executed task uses identical SUPPORT
+      writes, two interleaved keys, and a query revealed last (train n=16, test n=64).
+      Default expressive gating was bimodal (5/10 primary seeds); a separately
+      preregistered bias=2 follow-up passed (memory-only median 0.893, full REFA 0.930,
+      controls ~0.50; all contraction certificates passed). Result and raw artifacts:
+      `../docs/A1-KEYED-PARITY-RESULTS.md`, `../results/`. Qualification: sign alone is
+      insufficient; near-reflection magnitude predicted retention post hoc.
 - [ ] **A2 (K1, the founding bet): typed banks vs signed single store.** Build a
       parameter-matched REFA variant with ONE bank set storing signed values
       (polarity → ±v) and compare on the full battery. Accept (bet survives): typed

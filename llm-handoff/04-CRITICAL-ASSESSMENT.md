@@ -16,9 +16,12 @@ evidence — that is also progress.
    "would anyone cite this as an origin," perhaps 3–4 survive. The neuroscience ports
    (excitability tags, query sculpting, ACh/NE, clone-or-revise) are workshop-paper
    material until they solve a *measured* problem.
-3. **Zero experiments have run.** Verification confirmed citations are real and
-   accurately characterized — it did not confirm any mechanism works. Everything is
-   still hypothesis.
+3. **Only one kill experiment has run.** A corrected A1/K3 keyed-parity probe found a
+   real spectral capability cliff, but default expressive-gate training succeeded in
+   only 5/10 primary seeds. A spectrum-derived initialization passed a fresh-seed
+   follow-up (median 0.893 versus ~0.50 controls), with success concentrated near
+   eigenvalue -1. K1, K2, and K4 remain entirely untested; almost everything is still
+   hypothesis.
 4. **The symbolic→text boundary is the most likely cause of death.** Every certificate
    (Bloom, CMS, IBLT) rides on exact (s,r,o) keys. A text encoder dissolves them into
    learned representations unless someone does real work at that boundary
@@ -51,6 +54,14 @@ evidence — that is also progress.
 | K2 | Gram-measured (b,d,u) head vs trained 3-logit head: risk-coverage + smECE, in- and out-of-length-distribution | Thesis A's practical half | measured head matches accuracy and beats calibration OOD |
 | K3 | Parity-of-negations before/after the (0, 1+λ) gate rescale | the expressivity story | expressive mode solves and length-extrapolates; safe/current modes plateau |
 | K4 | A minimal text front-end (even a toy canonicalizer) over the certified path | the symbolic boundary objection | some certified coverage survives paraphrase; quantify the degradation curve |
+
+K3 status (2026-08-23): **mechanism survives with a qualification**. The original task
+was invalid because final polarity leaked parity. On the corrected keyed task, widening
+the gate range alone was optimizer-bimodal; spectrum-derived initialization produced a
+fresh-seed median of 0.893 at 4× length, while controls stayed at chance. The new
+standing challenge is reflection margin: across both phases, 23/23 expressive runs at
+minimum eigenvalue <= -0.99 solved, versus 1/17 farther away (post-hoc; requires
+independent confirmation). This does not count as evidence for typed stance banks.
 
 If two of the four fail, the honest conclusion is that this is an
 **instruments-and-theory project** (battery + capacity/evidential math), not an

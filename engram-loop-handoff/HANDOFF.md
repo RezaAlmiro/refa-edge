@@ -89,11 +89,25 @@ untrained "unknown" code path with zero false negatives.
 
 (Maintained across sessions — strike items when done, add provenance.)
 
-1. **Kernel first** (CONNECTIVE-LEAPS #1): stance-folded chunkwise WY kernel for the
-   16 (bank, stance) recurrences, float64-gated against the Python loop; then CUDA-graph
-   capture. Expected 10–50× wall clock, ~30× activation-memory cut. Unblocks everything.
-2. **Spectral write gate + parity task** (#2): `write_gate_mode` safe/expressive, runtime
-   contraction certificate in the runner, parity-of-negations dataset in `data.py`.
+**Priority override after the first kill experiment:** A2/K1 typed banks versus a
+signed single store is the immediate next state. The older list below was written before
+the kill-experiment pack and is not execution order. Finish K1, then K2 and K4, before
+substrate optimization. The frozen K1 design constraints and kill rule are in
+`docs/NEXT-RESEARCH-STATE.md`.
+
+1. **Kernel deferred until the founding bet has data** (CONNECTIVE-LEAPS #1):
+   stance-folded chunkwise WY kernel for the 16 (bank, stance) recurrences,
+   float64-gated against the Python loop; then CUDA-graph capture. Expected 10–50× wall
+   clock, ~30× activation-memory cut. Unblocks everything.
+2. **[DONE 2026-08-23] Spectral write gate + corrected keyed-parity task** (#2): the
+   originally proposed alternating-polarity task leaked parity through its final token.
+   Replaced with identical SUPPORT writes to two interleaved keys and a query revealed
+   last. Default expressive gating was bimodal (5/10 primary seeds); a fresh-seed,
+   preregistered spectrum-derived bias initialization passed (memory-only OOD median
+   0.893, full REFA 0.930, controls ~0.50). All spectral certificates passed. Post-hoc,
+   23/23 expressive runs with minimum eigenvalue <= -0.99 solved versus 1/17 farther
+   away: reflection magnitude, not sign alone, is the next hypothesis. See
+   `docs/A1-KEYED-PARITY-RESULTS.md` and tracked raw JSON under `results/`.
 3. **Provenance audit script** (#9): ~80 lines, zero model changes — replay episodes,
    verify the exact per-event responsibility decomposition, plot superseded-coefficient
    collapse. Validates the WY algebra before the kernel lands.
@@ -138,3 +152,13 @@ should start there.
   alongside this file; three claims retracted under adversarial verification; two
   filter-blocked verification passes re-run out-of-band (verdicts appended to the sweep
   document's addendum). Synthesis published as the third companion artifact.
+- **2026-08-23** — First kill experiment executed. Rejected the queued K3 task for
+  label leakage; implemented a leak-free keyed-parity generator, current/safe/expressive
+  gate modes, runtime spectral certificate, memory-only diagnostic readout, and a
+  reproducible 10-seed harness. Default A1 was inconclusive because expressive training
+  split 5/10 between reflection and positive-spectrum basins. A separately preregistered
+  shared bias=2 follow-up passed: memory-only length-64 median 0.893 (IQR 0.852–0.943),
+  full REFA 0.930 (0.921–0.935), controls ~0.50. 120 confirmatory/follow-up runs, raw
+  JSON, combined CSV/summary, report, and plot preserved. Corrected an interim verbal
+  misstatement that equated two accuracy failures with loss of negative sign; both kept
+  negative eigenvalues, showing sign is necessary here but not sufficient away from -1.

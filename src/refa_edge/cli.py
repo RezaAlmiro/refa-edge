@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from refa_edge.benchmarks.equivalence import check_dense_stream_equivalence
+from refa_edge.benchmarks.parity_kill import run_parity_kill
 from refa_edge.benchmarks.runner import run_benchmark
 from refa_edge.config import load_config
 from refa_edge.hardware import hardware_report, print_hardware_report, run_fit_check
@@ -61,6 +62,14 @@ def build_parser() -> argparse.ArgumentParser:
     )
     equivalence.add_argument("--tolerance", type=float, default=1e-9)
 
+    parity_kill = subparsers.add_parser(
+        "parity-kill",
+        help="Run the preregistered keyed-parity spectral-gate experiment",
+    )
+    parity_kill.add_argument("--config", required=True)
+    parity_kill.add_argument("--device", choices=["auto", "cpu", "cuda"], default=None)
+    parity_kill.add_argument("--output", default=None)
+
     serve = subparsers.add_parser("serve", help="Start the optional local REST API")
     serve.add_argument("--checkpoint", required=True)
     serve.add_argument("--host", default="127.0.0.1")
@@ -93,6 +102,12 @@ def main(argv: list[str] | None = None) -> None:
         from refa_edge.api import serve_checkpoint
 
         serve_checkpoint(args.checkpoint, args.host, args.port, args.device)
+        return
+    if args.command == "parity-kill":
+        config = load_config(args.config)
+        if args.device is not None:
+            config["device"] = args.device
+        run_parity_kill(config, output_override=args.output)
         return
 
     config_path = Path("configs/smoke.yaml") if args.command == "smoke" else Path(args.config)

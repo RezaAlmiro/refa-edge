@@ -7,6 +7,8 @@ missed, and make new connective leaps. This file is the launchpad.
 
 1. **Run the four kill experiments** (`04-CRITICAL-ASSESSMENT.md`). Nothing else in the
    program has standing until K1–K4 have data.
+   A1/K3 is complete; **A2/K1 typed versus signed memory is next**. Its decision state
+   is frozen in `../docs/NEXT-RESEARCH-STATE.md`.
 2. **Sweep decentralized training & inference** — the missing pillar for the mission's
    "for all" clause. Cover: DiLoCo and successors, the INTELLECT open-pretraining line,
    Petals/SWARM distributed inference, gradient compression (DisTrO-class), federated

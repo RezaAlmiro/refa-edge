@@ -1,0 +1,208 @@
+{
+  "groups": {
+    "full": {
+      "current": {
+        "runs": 10,
+        "validation_accuracy": {
+          "median": 0.541015625,
+          "q25": 0.52734375,
+          "q75": 0.56005859375
+        },
+        "ood_length_accuracy": {
+          "median": 0.50439453125,
+          "q25": 0.49658203125,
+          "q75": 0.50732421875
+        },
+        "unseen_target_count_accuracy": {
+          "median": 0.5000256375744291,
+          "q25": 0.4860641340454738,
+          "q75": 0.5098176569751169
+        },
+        "min_transition_eigenvalue": {
+          "median": 0.40076717734336853,
+          "q25": 0.32395724952220917,
+          "q75": 0.4435112923383713
+        },
+        "negative_eigenvalue_fraction": {
+          "median": 0.0,
+          "q25": 0.0,
+          "q75": 0.0
+        },
+        "train_seconds": {
+          "median": 19.450486749999982,
+          "q25": 18.71696486475048,
+          "q75": 19.96232069800135
+        }
+      },
+      "safe": {
+        "runs": 10,
+        "validation_accuracy": {
+          "median": 0.5400390625,
+          "q25": 0.517578125,
+          "q75": 0.55859375
+        },
+        "ood_length_accuracy": {
+          "median": 0.50146484375,
+          "q25": 0.496826171875,
+          "q75": 0.507568359375
+        },
+        "unseen_target_count_accuracy": {
+          "median": 0.4937404599332902,
+          "q25": 0.4902910610004582,
+          "q75": 0.5078796724789929
+        },
+        "min_transition_eigenvalue": {
+          "median": 0.4479067921638489,
+          "q25": 0.3885572999715805,
+          "q75": 0.4650789052248001
+        },
+        "negative_eigenvalue_fraction": {
+          "median": 0.0,
+          "q25": 0.0,
+          "q75": 0.0
+        },
+        "train_seconds": {
+          "median": 18.98513804150025,
+          "q25": 18.748805166748753,
+          "q75": 19.779982489498252
+        }
+      },
+      "expressive": {
+        "runs": 10,
+        "validation_accuracy": {
+          "median": 0.5439453125,
+          "q25": 0.52783203125,
+          "q75": 0.57568359375
+        },
+        "ood_length_accuracy": {
+          "median": 0.50439453125,
+          "q25": 0.498779296875,
+          "q75": 0.51904296875
+        },
+        "unseen_target_count_accuracy": {
+          "median": 0.5037783375314862,
+          "q25": 0.4900012626661195,
+          "q75": 0.5143514008955992
+        },
+        "min_transition_eigenvalue": {
+          "median": 0.2575167715549469,
+          "q25": -0.7868862301111221,
+          "q75": 0.3922404944896698
+        },
+        "negative_eigenvalue_fraction": {
+          "median": 0.0,
+          "q25": 0.0,
+          "q75": 1.0
+        },
+        "train_seconds": {
+          "median": 19.505749500000093,
+          "q25": 18.96499729200241,
+          "q75": 20.346668708500147
+        }
+      }
+    },
+    "memory_only": {
+      "current": {
+        "runs": 10,
+        "validation_accuracy": {
+          "median": 0.5087890625,
+          "q25": 0.49560546875,
+          "q75": 0.5302734375
+        },
+        "ood_length_accuracy": {
+          "median": 0.50048828125,
+          "q25": 0.495849609375,
+          "q75": 0.51171875
+        },
+        "unseen_target_count_accuracy": {
+          "median": 0.5051679586563307,
+          "q25": 0.4864657826418445,
+          "q75": 0.5149595731990191
+        },
+        "min_transition_eigenvalue": {
+          "median": 0.17313626408576965,
+          "q25": 0.10967390239238739,
+          "q75": 0.2139529287815094
+        },
+        "negative_eigenvalue_fraction": {
+          "median": 0.0,
+          "q25": 0.0,
+          "q75": 0.0
+        },
+        "train_seconds": {
+          "median": 15.438610291999794,
+          "q25": 15.348214208748686,
+          "q75": 15.931260426751578
+        }
+      },
+      "safe": {
+        "runs": 10,
+        "validation_accuracy": {
+          "median": 0.5146484375,
+          "q25": 0.494140625,
+          "q75": 0.53173828125
+        },
+        "ood_length_accuracy": {
+          "median": 0.49755859375,
+          "q25": 0.493896484375,
+          "q75": 0.504150390625
+        },
+        "unseen_target_count_accuracy": {
+          "median": 0.4955887510761088,
+          "q25": 0.4855079282357142,
+          "q75": 0.5067491155831352
+        },
+        "min_transition_eigenvalue": {
+          "median": 0.30579373240470886,
+          "q25": 0.27109570801258087,
+          "q75": 0.3401411175727844
+        },
+        "negative_eigenvalue_fraction": {
+          "median": 0.0,
+          "q25": 0.0,
+          "q75": 0.0
+        },
+        "train_seconds": {
+          "median": 15.038623874999757,
+          "q25": 14.820978917247885,
+          "q75": 15.551961395751277
+        }
+      },
+      "expressive": {
+        "runs": 10,
+        "validation_accuracy": {
+          "median": 0.7412109375,
+          "q25": 0.501953125,
+          "q75": 0.974609375
+        },
+        "ood_length_accuracy": {
+          "median": 0.703125,
+          "q25": 0.51318359375,
+          "q75": 0.926025390625
+        },
+        "unseen_target_count_accuracy": {
+          "median": 0.7026282732631172,
+          "q25": 0.5122985546045604,
+          "q75": 0.9185035495552307
+        },
+        "min_transition_eigenvalue": {
+          "median": -0.4515632688999176,
+          "q25": -0.9961818009614944,
+          "q75": 0.1271941214799881
+        },
+        "negative_eigenvalue_fraction": {
+          "median": 0.5,
+          "q25": 0.0,
+          "q75": 1.0
+        },
+        "train_seconds": {
+          "median": 15.34514783349914,
+          "q25": 14.84436005174939,
+          "q75": 15.517856333250165
+        }
+      }
+    }
+  },
+  "preregistered_verdict": "inconclusive_mechanism_not_engaged",
+  "rationale": "Expressive runs did not enter the preregistered negative-spectrum regime."
+}

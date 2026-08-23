@@ -155,6 +155,8 @@ fast-weight calculations in float64. A change that breaks the algebra fails the 
 - [Relationship to Pathway BDH and Soup](docs/RELATED_WORK.md)
 - [Fair benchmarking and external adapters](docs/BENCHMARKING.md)
 - [Blank results card](docs/RESULTS_TEMPLATE.md)
+- [A1 keyed-parity spectral-gate result](docs/A1-KEYED-PARITY-RESULTS.md)
+- [Next research state: typed versus signed memory](docs/NEXT-RESEARCH-STATE.md)
 
 ## Provenance and scope
 
