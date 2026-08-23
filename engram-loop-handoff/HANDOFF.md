@@ -55,39 +55,68 @@ Weights is the *control-plane theory* it extends.
     (the query is always the last row in the dataset).
   - "Unknown" is a learned class with no calibration story yet.
 
-## This session (2026-08-23): the ultra sweep
+## This session (2026-08-23): the ultra sweep — COMPLETED
 
-An ultracode workflow ran 13 parallel domain finders + adversarial verification of every
-load-bearing claim + a completeness critic + follow-up finders + a three-lens connective
-leap panel, covering: delta-rule parallelization math, associative capacity theory,
-evidential uncertainty algebra, temporal codes, cognitive-map/binding math,
-neuromodulatory gating, local learning, consolidation math, mid-2025→2026
-brain↔machine mapping, memory substrates, mathematical frameworks audit, and two scouts
-hunting areas absent from the existing ledgers.
+An ultracode workflow ran 13 parallel domain finders (188 findings), adversarial
+verification of every load-bearing claim, a completeness critic that surfaced 6 missed
+areas and spawned 4 follow-up finders (streaming sketches, rate-distortion memory
+theory, truth discovery / source reliability, neural algorithmic reasoning), and a
+three-lens panel (mathematics / neuroscience / edge-systems) that produced 20 connective
+leaps. ~3.5M research tokens, 943 tool calls, ~2.7 h wall clock.
 
-Outputs of this session (read in this order):
+Outputs (read in this order):
 
-1. `SWEEP-2026-08-23.md` — verified findings by area (the new evidence base).
-2. `CONNECTIVE-LEAPS.md` — ranked novel design moves for REFA Edge, with math,
-   novelty checks, first experiments, and kill criteria.
-3. Updated sections of this handoff (below).
+1. `SWEEP-2026-08-23.md` — the full verified evidence base by area, with per-claim
+   verification verdicts and three retractions from adversarial checking.
+2. `CONNECTIVE-LEAPS.md` — the 20 leaps merged into families and ranked into three
+   tiers, plus ten "direct adoptions" the sweeps mandate regardless of novelty.
+3. This handoff's next-actions queue (below).
+
+The one-sentence discovery that reorganizes the project: **REFA's update is exactly a
+constant-gate gated delta rule**, term for term — which makes the 2024–26
+DeltaNet/Gated-DeltaNet WY chunkwise algebra an *exact* (not approximate) rewrite of the
+Python loop, imports sharp stability/expressivity theory (current gates confine
+transition eigenvalues to ≈[0,1), provably blocking parity-class revision tracking —
+fixable free), and positions every upgrade inside the test-time-regression framework.
+Second organizing discovery: the (support, opposition, unknown) triple has an exact
+existing algebra — subjective-logic opinions / Beta evidence — and the honest way to get
+it is to *measure* evidence counts from an erase-consistent write Gram rather than train
+a 3-logit head (which 2022–24 theory proves cannot be faithful). Third: certified
+streaming sketches (Bloom / conservative count-min / IBLT) give REFA a deterministic,
+untrained "unknown" code path with zero false negatives.
 
 ## Next actions queue
 
 (Maintained across sessions — strike items when done, add provenance.)
 
-1. Implement the top-ranked leaps from `CONNECTIVE-LEAPS.md` behind the repo's
-   equivalence-gate discipline (each new mechanism needs a dense reference + streamed
-   form + float64 output/gradient test before benchmarking).
-2. Chunk-parallelize the REFA time loop (see SWEEP: delta-rule/WY findings) and record
-   the wall-clock delta on the RTX 2060 profile.
-3. Add the evidential head + conformal unknown wrapper (see SWEEP: evidential-math) and
-   report risk–coverage curves next to accuracy.
-4. Attach Laplace timestamps to events (SWEEP: temporal-math) and add the
-   delayed-evidence / temporal-displacement task to the benchmark suite.
-5. Phase 0 of the Engram Loop proposal (Confabulation Battery) can be prototyped against
-   REFA itself: gist intrusion ≈ close-decoy errors; temporal displacement ≈ revision
-   failures; calibrated abstention ≈ unknown-class type-2 ROC.
+1. **Kernel first** (CONNECTIVE-LEAPS #1): stance-folded chunkwise WY kernel for the
+   16 (bank, stance) recurrences, float64-gated against the Python loop; then CUDA-graph
+   capture. Expected 10–50× wall clock, ~30× activation-memory cut. Unblocks everything.
+2. **Spectral write gate + parity task** (#2): `write_gate_mode` safe/expressive, runtime
+   contraction certificate in the runner, parity-of-negations dataset in `data.py`.
+3. **Provenance audit script** (#9): ~80 lines, zero model changes — replay episodes,
+   verify the exact per-event responsibility decomposition, plot superseded-coefficient
+   collapse. Validates the WY algebra before the kernel lands.
+4. **Measured evidential stack** (#3–#6): write-Gram evidence counts → closed-form
+   (b,d,u); ridge-coverage sidecar; Bloom/CMS/IBLT certified-unknown sidecar; ACI
+   conformal wrapper. Report risk–coverage + smECE against the 3-logit baseline.
+5. **Timestamp columns** (#7): K=6 log-spaced decay value-columns (erase resets age);
+   recency-ordering probe task; complex-tap extension (#8) if magnitude saturates.
+6. **muP-for-banks** (#10): width map + coordinate-check gate; move all tuning to
+   30k-param proxies.
+7. Tier 2 by task priority: Plateau Commit (delayed evidence), Silence-Is-Unknown
+   (typed abstention), forward-decay + int8 cold-bank residency (offload), ACh/NE dial +
+   streaming Dawid–Skene (provenance conflict), Clone-or-Revise (regime return).
+8. Direct adoptions checklist (CONNECTIVE-LEAPS "Direct adoptions"): state-passing
+   post-training, multi-seed medians+IQR, smECE, crosstalk instrumentation, DMFT GRU
+   init, rotation-bound keys, load-balanced top-k routing, new battery tasks, ACT-R
+   baseline.
+9. Open reading from the critic (no follow-up run yet): region-based (box/cone)
+   embeddings for facts-as-volumes; schema-congruency-gated consolidation
+   (Tse / van Kesteren SLIMM).
+10. Confabulation Battery Phase 0 prototype against REFA itself: gist intrusion ≈
+    close-decoy errors; temporal displacement ≈ revision failures; calibrated abstention
+    ≈ unknown-class type-2 ROC — now with the measured-evidence head as the instrument.
 
 ## Session log
 
@@ -95,5 +124,8 @@ Outputs of this session (read in this order):
 - **2026-08-22** — The Engram Loop proposal written on 16 verified literature sweeps;
   audited same day; DeepSeek-Engram positioning added post-audit.
 - **2026-08-23** — Handoff directory recovered into the repo. Ultra sweep executed
-  (13 finders → verify → gap critic → follow-ups → 3-lens leap panel). Findings and
-  leaps committed alongside this file.
+  (13 finders → verify → gap critic → 4 follow-ups → 3-lens leap panel; 38 agents,
+  188 findings, 20 leaps). `SWEEP-2026-08-23.md` and `CONNECTIVE-LEAPS.md` committed
+  alongside this file; three claims retracted under adversarial verification; two
+  filter-blocked verification passes re-run out-of-band (verdicts appended to the sweep
+  document's addendum). Synthesis published as the third companion artifact.
